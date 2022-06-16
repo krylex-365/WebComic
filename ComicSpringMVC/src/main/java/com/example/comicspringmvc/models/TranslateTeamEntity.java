@@ -1,7 +1,5 @@
 package com.example.comicspringmvc.models;
 
-import org.apache.tomcat.jni.Local;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 

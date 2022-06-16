@@ -4,14 +4,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CateComic")
-public class CateComic {
+public class CateComicEntity {
     @Id
     @Column(name = "CateComicId", nullable = false)
     private Long cateComicId;
 
-    @ManyToOne
-    @JoinColumn(name = "CateId")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "CateId",foreignKey = @ForeignKey(name = "FK_CateComic_Cate"))
     private CategoriesEntity cate;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_CateComic_Comic"))
+    private ComicEntity comic;
+
+    public ComicEntity getComic() {
+        return comic;
+    }
+
+    public void setComic(ComicEntity comic) {
+        this.comic = comic;
+    }
 
     public CategoriesEntity getCate() {
         return cate;

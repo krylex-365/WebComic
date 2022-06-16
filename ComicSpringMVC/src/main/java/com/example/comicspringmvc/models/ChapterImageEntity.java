@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ChapterImage")
-public class ChapterImage {
+public class ChapterImageEntity {
     @Id
     @Column(name = "Imageid", nullable = false)
     private Long idImage;

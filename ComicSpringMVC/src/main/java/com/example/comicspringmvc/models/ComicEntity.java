@@ -7,11 +7,11 @@ import java.time.LocalDate;
 @Table(name = "Comic")
 public class ComicEntity {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "ComicId", nullable = false)
+    private Long comicId;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "ComicName")
+    private String comicName;
 
     @Column(name = "Descriptions")
     private String descriptions;
@@ -83,12 +83,12 @@ public class ComicEntity {
         this.dateFrom = dateFrom;
     }
 
-    public String getName() {
-        return name;
+    public String getComicName() {
+        return comicName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setComicName(String name) {
+        this.comicName = name;
     }
 
 
@@ -100,11 +100,11 @@ public class ComicEntity {
         this.descriptions = descriptions;
     }
 
-    public Long getId() {
-        return id;
+    public Long getComicId() {
+        return comicId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setComicId(Long id) {
+        this.comicId = id;
     }
 }

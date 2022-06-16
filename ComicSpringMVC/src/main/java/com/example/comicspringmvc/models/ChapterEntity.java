@@ -4,17 +4,17 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "chapter_entity")
+@Table(name = "Chapter")
 public class ChapterEntity {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "IdChapter", nullable = false)
+    private Long idChapter;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "ChapterName")
+    private String chapterName;
 
-    @Column(name = "Date")
-    private LocalDate date;
+    @Column(name = "ReleaseDate")
+    private LocalDate releaseDate;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "IdComic",foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
@@ -40,27 +40,27 @@ public class ChapterEntity {
         this.idComic = idComic;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setReleaseDate(LocalDate date) {
+        this.releaseDate = date;
     }
 
-    public String getName() {
-        return name;
+    public String getChapterName() {
+        return chapterName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setChapterName(String name) {
+        this.chapterName = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdChapter() {
+        return idChapter;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdChapter(Long id) {
+        this.idChapter = id;
     }
 }

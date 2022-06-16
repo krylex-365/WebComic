@@ -15,7 +15,7 @@ public class AccountEntity {
     private String userName;
 
     @Column(name = "Password", nullable = false)
-    private String passWord;
+    private String password;
 
     @Column(name = "CreatedDate", nullable = false)
     private LocalDate createdDate;
@@ -36,7 +36,7 @@ public class AccountEntity {
     public AccountEntity(Long accountId, String userName, String passWord, LocalDate createdDate, Integer role, Integer status, TranslateTeamEntity translateTeam) {
         this.accountId = accountId;
         this.userName = userName;
-        this.passWord = passWord;
+        this.password = passWord;
         this.createdDate = createdDate;
         this.role = role;
         this.status = status;
@@ -59,12 +59,12 @@ public class AccountEntity {
         this.userName = userName;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String passWord) {
+        this.password = passWord;
     }
 
     public LocalDate getCreatedDate() {
@@ -104,7 +104,7 @@ public class AccountEntity {
         return "AccountEntity{" +
                 "accountId=" + accountId +
                 ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", passWord='" + password + '\'' +
                 ", createdDate=" + createdDate +
                 ", role=" + role +
                 ", status=" + status +

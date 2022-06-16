@@ -9,25 +9,25 @@ import javax.persistence.Table;
 @Table(name = "Author")
 public class AuthorEntity {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "AuthorID", nullable = false)
+    private Long authorId;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "AuthorName")
+    private String authorName;
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorName(String name) {
+        this.authorName = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAuthorId(Long id) {
+        this.authorId = id;
     }
 }

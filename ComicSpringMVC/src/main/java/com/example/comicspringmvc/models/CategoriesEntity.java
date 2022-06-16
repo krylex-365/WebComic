@@ -9,11 +9,11 @@ import javax.persistence.Table;
 @Table(name = "Categories")
 public class CategoriesEntity {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "CateId", nullable = false)
+    private Long cateId;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "CateName")
+    private String cateName;
 
     @Column(name = "Descriptions")
     private String descriptions;
@@ -37,19 +37,19 @@ public class CategoriesEntity {
         this.descriptions = descriptions;
     }
 
-    public String getName() {
-        return name;
+    public String getCateName() {
+        return cateName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCateName(String name) {
+        this.cateName = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCateId() {
+        return cateId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCateId(Long id) {
+        this.cateId = id;
     }
 }

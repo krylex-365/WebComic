@@ -3,11 +3,11 @@ package com.example.comicspringmvc.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "chapter_image")
+@Table(name = "ChapterImage")
 public class ChapterImage {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "Imageid", nullable = false)
+    private Long idImage;
 
     @Column(name = "URL")
     private String url;
@@ -32,11 +32,11 @@ public class ChapterImage {
         this.url = url;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdImage() {
+        return idImage;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdImage(Long id) {
+        this.idImage = id;
     }
 }

@@ -2,11 +2,13 @@ package com.example.comicspringmvc.repositories;
 
 import com.example.comicspringmvc.models.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
+import java.util.List;
 
-@Repository
 public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
-//    Optional<AccountEntity> findByUserName(String userName);
+
+
+    @Query(value = "SELECT cc FROM AccountEntity cc WHERE cc.email = ?1")
+    AccountEntity findByUsername(String email);
 }

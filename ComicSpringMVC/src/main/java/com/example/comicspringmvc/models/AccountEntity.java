@@ -2,6 +2,8 @@ package com.example.comicspringmvc.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Account")
@@ -39,10 +41,26 @@ public class AccountEntity {
     @JoinColumn(name = "TranslateTeamId", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
     private TranslateTeamEntity translateTeam;
 
+    @ManyToMany
+    @JoinTable(name = "account_role_entities",
+            joinColumns = @JoinColumn(name = "account_entity_account_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_entities_role_id"))
+    private Set<RoleEntity> roles = new LinkedHashSet<>();
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
+    }
+
     public AccountEntity() {
     }
 
-    public AccountEntity(String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer role, Integer status, TranslateTeamEntity translateTeam) {
+
+    public AccountEntity(Long accountId, String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer role, Integer status, TranslateTeamEntity translateTeam, Set<RoleEntity> roles) {
+        this.accountId = accountId;
         this.email = email;
         this.password = password;
         this.createdDate = createdDate;
@@ -52,6 +70,7 @@ public class AccountEntity {
         this.role = role;
         this.status = status;
         this.translateTeam = translateTeam;
+        this.roles = roles;
     }
 
     public Long getAccountId() {
@@ -110,13 +129,13 @@ public class AccountEntity {
         this.sex = sex;
     }
 
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
+//    public Integer getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Integer role) {
+//        this.role = role;
+//    }
 
     public Integer getStatus() {
         return status;

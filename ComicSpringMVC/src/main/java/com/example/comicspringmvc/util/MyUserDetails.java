@@ -52,11 +52,11 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return (account.getStatus()==1);
+        return true;
     }
 }

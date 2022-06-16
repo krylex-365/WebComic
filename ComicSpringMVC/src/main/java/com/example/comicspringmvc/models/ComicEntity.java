@@ -31,9 +31,21 @@ public class ComicEntity {
     @Column(name = "CountView")
     private Integer countView;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author",foreignKey = @ForeignKey(name = "FK_Comic_Author"))
+    private AuthorEntity authorEntity;
+
+    @ManyToOne(optional = false)
     @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Comic_Account"))
     private AccountEntity account;
+
+    public AuthorEntity getAuthorEntity() {
+        return authorEntity;
+    }
+
+    public void setAuthorEntity(AuthorEntity authorEntity) {
+        this.authorEntity = authorEntity;
+    }
 
     public AccountEntity getAccount() {
         return account;

@@ -3,7 +3,7 @@ package com.example.comicspringmvc.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "follow_comic")
+@Table(name = "FollowComic")
 public class FollowComic {
     @Id
     @Column(name = "FollowComicDd", nullable = false)

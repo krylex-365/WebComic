@@ -11,8 +11,8 @@ drop table AuthorComic
 drop table ChapterImage
 drop table Chapter
 drop table Author
-drop table Account
-drop table UserDetail
-drop table TranslateTeam
 drop table Category
 drop table Comic
+drop table Account
+--drop table UserDetail
+drop table TranslateTeam

@@ -11,14 +11,23 @@ public class AccountEntity {
     @Column(name = "AccountId")
     private Long accountId;
 
-    @Column(name = "Username", nullable = false)
-    private String userName;
+    @Column(name = "Email", nullable = false, unique = true)
+    private String email;
 
     @Column(name = "Password", nullable = false)
     private String password;
 
     @Column(name = "CreatedDate", nullable = false)
     private LocalDate createdDate;
+
+    @Column(name = "FullName", nullable = false)
+    private String fullName;
+
+    @Column(name = "Birthday")
+    private LocalDate birthDay;
+
+    @Column(name = "Sex")
+    private Integer sex;
 
     @Column(name = "Role", columnDefinition = "integer default 0", nullable = false)
     private Integer role = 0;
@@ -30,11 +39,19 @@ public class AccountEntity {
     @JoinColumn(name = "TranslateTeamId", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
     private TranslateTeamEntity translateTeam;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "UserDetailId", foreignKey = @ForeignKey(name = "FK_Account_UserDetail"))
-    private UserDetailEntity userDetail;
-
     public AccountEntity() {
+    }
+
+    public AccountEntity(String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer role, Integer status, TranslateTeamEntity translateTeam) {
+        this.email = email;
+        this.password = password;
+        this.createdDate = createdDate;
+        this.fullName = fullName;
+        this.birthDay = birthDay;
+        this.sex = sex;
+        this.role = role;
+        this.status = status;
+        this.translateTeam = translateTeam;
     }
 
     public Long getAccountId() {
@@ -45,20 +62,20 @@ public class AccountEntity {
         this.accountId = accountId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String passWord) {
-        this.password = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getCreatedDate() {
@@ -67,6 +84,30 @@ public class AccountEntity {
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public LocalDate getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(LocalDate birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public Integer getRole() {
@@ -97,13 +138,15 @@ public class AccountEntity {
     public String toString() {
         return "AccountEntity{" +
                 "accountId=" + accountId +
-                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", createdDate=" + createdDate +
+                ", fullName='" + fullName + '\'' +
+                ", birthDay=" + birthDay +
+                ", sex=" + sex +
                 ", role=" + role +
                 ", status=" + status +
                 ", translateTeam=" + translateTeam +
-                ", userDetail=" + userDetail +
                 '}';
     }
 }

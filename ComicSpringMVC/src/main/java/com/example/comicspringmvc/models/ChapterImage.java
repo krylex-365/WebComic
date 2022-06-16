@@ -13,15 +13,15 @@ public class ChapterImage {
     private String url;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "IdChapter",foreignKey = @ForeignKey(name = "FK_ChapterImage_Chapter"))
-    private ChapterEntity idChapter;
+    @JoinColumn(name = "ChapterId",foreignKey = @ForeignKey(name = "FK_ChapterImage_Chapter"))
+    private ChapterEntity chapter;
 
-    public ChapterEntity getIdChapter() {
-        return idChapter;
+    public ChapterEntity getChapter() {
+        return chapter;
     }
 
-    public void setIdChapter(ChapterEntity idChapter) {
-        this.idChapter = idChapter;
+    public void setChapter(ChapterEntity idChapter) {
+        this.chapter = idChapter;
     }
 
     public String getUrl() {

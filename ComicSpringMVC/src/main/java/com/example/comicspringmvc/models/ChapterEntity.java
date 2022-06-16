@@ -17,27 +17,27 @@ public class ChapterEntity {
     private LocalDate releaseDate;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "IdComic",foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
-    private ComicEntity idComic;
+    @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
+    private ComicEntity comic;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "IdAccount",foreignKey = @ForeignKey(name = "FK_Chapter_Account"))
-    private AccountEntity accountEntity;
+    @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Chapter_Account"))
+    private AccountEntity account;
 
-    public AccountEntity getAccountEntity() {
-        return accountEntity;
+    public AccountEntity getAccount() {
+        return account;
     }
 
-    public void setAccountEntity(AccountEntity accountEntity) {
-        this.accountEntity = accountEntity;
+    public void setAccount(AccountEntity accountEntity) {
+        this.account = accountEntity;
     }
 
-    public ComicEntity getIdComic() {
-        return idComic;
+    public ComicEntity getComic() {
+        return comic;
     }
 
-    public void setIdComic(ComicEntity idComic) {
-        this.idComic = idComic;
+    public void setComic(ComicEntity idComic) {
+        this.comic = idComic;
     }
 
     public LocalDate getReleaseDate() {

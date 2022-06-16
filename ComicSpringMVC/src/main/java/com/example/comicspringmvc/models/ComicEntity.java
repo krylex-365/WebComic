@@ -33,14 +33,14 @@ public class ComicEntity {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Comic_Account"))
-    private AccountEntity Account;
+    private AccountEntity account;
 
     public AccountEntity getAccount() {
-        return Account;
+        return account;
     }
 
     public void setAccount(AccountEntity accountEntity) {
-        this.Account = accountEntity;
+        this.account = accountEntity;
     }
 
     public Integer getCountView() {

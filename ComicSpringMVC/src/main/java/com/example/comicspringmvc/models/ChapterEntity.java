@@ -7,60 +7,100 @@ import java.time.LocalDate;
 @Table(name = "Chapter")
 public class ChapterEntity {
     @Id
-    @Column(name = "IdChapter", nullable = false)
-    private Long idChapter;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ChapterId")
+    private Long chapterId;
 
-    @Column(name = "ChapterName")
+    @Column(name = "ChapterName", nullable = false)
     private String chapterName;
 
-    @Column(name = "ReleaseDate")
-    private LocalDate releaseDate;
+    @Column(name = "CreatedDate", nullable = false)
+    private LocalDate createdDate;
+
+    @Column(name = "ModifiedDate")
+    private LocalDate modifiedDate;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
+    @JoinColumn(name = "CreatedBy", nullable = false, foreignKey = @ForeignKey(name = "FK_Chapter_AccountCreated"))
+    private AccountEntity createdBy;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ModifiedBy", foreignKey = @ForeignKey(name = "FK_Chapter_AccountModified"))
+    private AccountEntity modifiedBy;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ComicId", nullable = false, foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
     private ComicEntity comic;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Chapter_Account"))
-    private AccountEntity account;
-
-    public AccountEntity getAccount() {
-        return account;
+    public ChapterEntity() {
     }
 
-    public void setAccount(AccountEntity accountEntity) {
-        this.account = accountEntity;
+    public Long getChapterId() {
+        return chapterId;
     }
 
-    public ComicEntity getComic() {
-        return comic;
-    }
-
-    public void setComic(ComicEntity idComic) {
-        this.comic = idComic;
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate date) {
-        this.releaseDate = date;
+    public void setChapterId(Long chapterId) {
+        this.chapterId = chapterId;
     }
 
     public String getChapterName() {
         return chapterName;
     }
 
-    public void setChapterName(String name) {
-        this.chapterName = name;
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
     }
 
-    public Long getIdChapter() {
-        return idChapter;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setIdChapter(Long id) {
-        this.idChapter = id;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDate getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDate modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public AccountEntity getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(AccountEntity createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public AccountEntity getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(AccountEntity modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public ComicEntity getComic() {
+        return comic;
+    }
+
+    public void setComic(ComicEntity comic) {
+        this.comic = comic;
+    }
+
+    @Override
+    public String toString() {
+        return "ChapterEntity{" +
+                "chapterId=" + chapterId +
+                ", chapterName='" + chapterName + '\'' +
+                ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
+                ", createdBy=" + createdBy +
+                ", modifiedBy=" + modifiedBy +
+                ", comic=" + comic +
+                '}';
     }
 }

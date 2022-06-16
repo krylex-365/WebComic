@@ -4,18 +4,22 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "FollowComic")
-public class FollowComic {
+public class FollowComicEntity {
     @Id
-    @Column(name = "FollowComicDd", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "FollowComicId")
     private Long followComicId;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Account",foreignKey = @ForeignKey(name = "FK_Follow_Account"))
+    @JoinColumn(name = "Account", foreignKey = @ForeignKey(name = "FK_Follow_Account"))
     private AccountEntity account;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Comic", foreignKey = @ForeignKey(name = "FK_Follow_Comic"))
     private ComicEntity comic;
+
+    public FollowComicEntity() {
+    }
 
     public ComicEntity getComic() {
         return comic;
@@ -39,5 +43,14 @@ public class FollowComic {
 
     public void setFollowComicId(Long id) {
         this.followComicId = id;
+    }
+
+    @Override
+    public String toString() {
+        return "FollowComicEntity{" +
+                "followComicId=" + followComicId +
+                ", account=" + account +
+                ", comic=" + comic +
+                '}';
     }
 }

@@ -17,17 +17,13 @@ public class TranslateTeamEntity {
     @Column(name = "CreatedDate", nullable = false)
     private LocalDate createdDate;
 
-    @Column(name = "Status", nullable = false)
-    private Integer status;
+    @Column(name = "ModifiedDate")
+    private LocalDate modifiedDate;
+
+    @Column(name = "Status", columnDefinition = "integer default 1")
+    private Integer status = 1;
 
     public TranslateTeamEntity() {
-    }
-
-    public TranslateTeamEntity(Long translateTeamId, String translateTeamName, LocalDate createdDate, Integer status) {
-        this.translateTeamId = translateTeamId;
-        this.translateTeamName = translateTeamName;
-        this.createdDate = createdDate;
-        this.status = status;
     }
 
     public Long getTranslateTeamId() {
@@ -62,12 +58,21 @@ public class TranslateTeamEntity {
         this.status = status;
     }
 
+    public LocalDate getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDate modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
     @Override
     public String toString() {
         return "TranslateTeamEntity{" +
                 "translateTeamId=" + translateTeamId +
                 ", translateTeamName='" + translateTeamName + '\'' +
                 ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
                 ", status=" + status +
                 '}';
     }

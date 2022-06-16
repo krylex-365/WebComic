@@ -7,13 +7,14 @@ import java.time.LocalDate;
 @Table(name = "Comment")
 public class CommentEntity {
     @Id
-    @Column(name = "CommentId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CommentId")
     private Long commentId;
 
-    @Column(name = "Comment")
-    private String comment;
+    @Column(name = "Content", nullable = false)
+    private String content;
 
-    @Column(name = "Date")
+    @Column(name = "Date", nullable = false)
     private LocalDate date;
 
     @ManyToOne(optional = false)
@@ -23,6 +24,9 @@ public class CommentEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "AccountId", foreignKey = @ForeignKey(name = "FK_Comment_Account"))
     private AccountEntity Account;
+
+    public CommentEntity() {
+    }
 
     public AccountEntity getAccount() {
         return Account;
@@ -49,11 +53,11 @@ public class CommentEntity {
     }
 
     public String getComment() {
-        return comment;
+        return content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setComment(String content) {
+        this.content = content;
     }
 
     public Long getCommentId() {
@@ -62,5 +66,16 @@ public class CommentEntity {
 
     public void setCommentId(Long id) {
         this.commentId = id;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentEntity{" +
+                "commentId=" + commentId +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                ", comic=" + comic +
+                ", Account=" + Account +
+                '}';
     }
 }

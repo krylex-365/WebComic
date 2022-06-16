@@ -6,22 +6,26 @@ import javax.persistence.*;
 @Table(name = "ChapterImage")
 public class ChapterImageEntity {
     @Id
-    @Column(name = "Imageid", nullable = false)
-    private Long idImage;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ChapterImageId")
+    private Long chapterImageId;
 
-    @Column(name = "URL")
+    @Column(name = "URL", nullable = false)
     private String url;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ChapterId",foreignKey = @ForeignKey(name = "FK_ChapterImage_Chapter"))
+    @JoinColumn(name = "ChapterId", nullable = false, foreignKey = @ForeignKey(name = "FK_ChapterImage_Chapter"))
     private ChapterEntity chapter;
 
-    public ChapterEntity getChapter() {
-        return chapter;
+    public ChapterImageEntity() {
     }
 
-    public void setChapter(ChapterEntity idChapter) {
-        this.chapter = idChapter;
+    public Long getImageId() {
+        return chapterImageId;
+    }
+
+    public void setImageId(Long chapterImageId) {
+        this.chapterImageId = chapterImageId;
     }
 
     public String getUrl() {
@@ -32,11 +36,20 @@ public class ChapterImageEntity {
         this.url = url;
     }
 
-    public Long getIdImage() {
-        return idImage;
+    public ChapterEntity getChapter() {
+        return chapter;
     }
 
-    public void setIdImage(Long id) {
-        this.idImage = id;
+    public void setChapter(ChapterEntity chapter) {
+        this.chapter = chapter;
+    }
+
+    @Override
+    public String toString() {
+        return "ChapterImage{" +
+                "chapterImageId=" + chapterImageId +
+                ", url='" + url + '\'' +
+                ", chapter=" + chapter +
+                '}';
     }
 }

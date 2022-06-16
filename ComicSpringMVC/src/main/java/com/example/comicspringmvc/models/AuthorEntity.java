@@ -1,19 +1,20 @@
 package com.example.comicspringmvc.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Author")
 public class AuthorEntity {
     @Id
-    @Column(name = "AuthorID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AuthorId")
     private Long authorId;
 
-    @Column(name = "AuthorName")
+    @Column(name = "AuthorName", nullable = false)
     private String authorName;
+
+    public AuthorEntity() {
+    }
 
     public String getAuthorName() {
         return authorName;

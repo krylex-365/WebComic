@@ -6,16 +6,36 @@ import javax.persistence.*;
 @Table(name = "CateComic")
 public class CateComicEntity {
     @Id
-    @Column(name = "CateComicId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CateComicId")
     private Long cateComicId;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "CateId",foreignKey = @ForeignKey(name = "FK_CateComic_Cate"))
-    private CategoriesEntity cate;
+    @JoinColumn(name = "CategoryId",foreignKey = @ForeignKey(name = "FK_CateComic_Category"))
+    private CategoryEntity category;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_CateComic_Comic"))
     private ComicEntity comic;
+
+    public CateComicEntity() {
+    }
+
+    public Long getCateComicId() {
+        return cateComicId;
+    }
+
+    public void setCateComicId(Long cateComicId) {
+        this.cateComicId = cateComicId;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 
     public ComicEntity getComic() {
         return comic;
@@ -25,19 +45,12 @@ public class CateComicEntity {
         this.comic = comic;
     }
 
-    public CategoriesEntity getCate() {
-        return cate;
-    }
-
-    public void setCate(CategoriesEntity cateId) {
-        this.cate = cateId;
-    }
-
-    public Long getCateComicId() {
-        return cateComicId;
-    }
-
-    public void setCateComicId(Long id) {
-        this.cateComicId = id;
+    @Override
+    public String toString() {
+        return "CateComicEntity{" +
+                "cateComicId=" + cateComicId +
+                ", category=" + category +
+                ", comic=" + comic +
+                '}';
     }
 }

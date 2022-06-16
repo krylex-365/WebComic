@@ -1,19 +1,18 @@
 package com.example.comicspringmvc.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
-@Table(name = "Categories")
-public class CategoriesEntity {
+@Table(name = "Category")
+public class CategoryEntity {
     @Id
-    @Column(name = "CateId", nullable = false)
-    private Long cateId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CategoryId")
+    private Long categoryId;
 
-    @Column(name = "CateName")
-    private String cateName;
+    @Column(name = "CategoryName", nullable = false)
+    private String categoryName;
 
     @Column(name = "Descriptions")
     private String descriptions;
@@ -38,18 +37,23 @@ public class CategoriesEntity {
     }
 
     public String getCateName() {
-        return cateName;
+        return categoryName;
     }
 
     public void setCateName(String name) {
-        this.cateName = name;
+        this.categoryName = name;
     }
 
-    public Long getCateId() {
-        return cateId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCateId(Long id) {
-        this.cateId = id;
+    public void setCategoryId(Long id) {
+        this.categoryId = id;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryEntity{}";
     }
 }

@@ -30,17 +30,11 @@ public class AccountEntity {
     @JoinColumn(name = "TranslateTeamId", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
     private TranslateTeamEntity translateTeam;
 
-    public AccountEntity() {
-    }
+    @OneToOne(optional = false)
+    @JoinColumn(name = "UserDetailId", foreignKey = @ForeignKey(name = "FK_Account_UserDetail"))
+    private UserDetailEntity userDetail;
 
-    public AccountEntity(Long accountId, String userName, String passWord, LocalDate createdDate, Integer role, Integer status, TranslateTeamEntity translateTeam) {
-        this.accountId = accountId;
-        this.userName = userName;
-        this.password = passWord;
-        this.createdDate = createdDate;
-        this.role = role;
-        this.status = status;
-        this.translateTeam = translateTeam;
+    public AccountEntity() {
     }
 
     public Long getAccountId() {
@@ -104,11 +98,12 @@ public class AccountEntity {
         return "AccountEntity{" +
                 "accountId=" + accountId +
                 ", userName='" + userName + '\'' +
-                ", passWord='" + password + '\'' +
+                ", password='" + password + '\'' +
                 ", createdDate=" + createdDate +
                 ", role=" + role +
                 ", status=" + status +
                 ", translateTeam=" + translateTeam +
+                ", userDetail=" + userDetail +
                 '}';
     }
 }

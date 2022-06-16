@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "UserDetail")
-public class UserEntity {
+public class UserDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserDetailId")
@@ -18,26 +18,12 @@ public class UserEntity {
     private LocalDate birthDay;
 
     @Column(name = "Sex")
-    private String sex;
+    private Integer sex;
 
     @Column(name = "Mail", nullable = false)
     private String mail;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "AccountId", foreignKey = @ForeignKey(name = "FK_User_Account"))
-    private AccountEntity account;
-
-
-    public UserEntity() {
-    }
-
-    public UserEntity(Long userDetailId, String fullName, LocalDate birthDay, String sex, String mail, AccountEntity account) {
-        this.userDetailId = userDetailId;
-        this.fullName = fullName;
-        this.birthDay = birthDay;
-        this.sex = sex;
-        this.mail = mail;
-        this.account = account;
+    public UserDetailEntity() {
     }
 
     public Long getUserDetailId() {
@@ -64,11 +50,11 @@ public class UserEntity {
         this.birthDay = birthDay;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -80,14 +66,6 @@ public class UserEntity {
         this.mail = mail;
     }
 
-    public AccountEntity getAccount() {
-        return account;
-    }
-
-    public void setAccount(AccountEntity account) {
-        this.account = account;
-    }
-
     @Override
     public String toString() {
         return "UserEntity{" +
@@ -95,8 +73,7 @@ public class UserEntity {
                 ", fullName='" + fullName + '\'' +
                 ", birthDay=" + birthDay +
                 ", sex='" + sex + '\'' +
-                ", mail='" + mail + '\'' +
-                ", account=" + account +
+                ", mail='" + mail +
                 '}';
     }
 }

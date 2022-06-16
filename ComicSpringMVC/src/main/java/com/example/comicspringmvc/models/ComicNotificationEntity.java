@@ -5,16 +5,17 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "ComicNotification")
-public class ComicNotification {
+public class ComicNotificationEntity {
     @Id
-    @Column(name = "notifiation_id", nullable = false)
-    private Long notifiationId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "NotificationId")
+    private Long notificationId;
 
-    @Column(name = "Date")
+    @Column(name = "Date", nullable = false)
     private LocalDate date;
 
-    @Column(name = "Status")
-    private Integer status;
+    @Column(name = "Status", columnDefinition = "integer default 1")
+    private Integer status = 1;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_Notification_Comic"))
@@ -23,6 +24,9 @@ public class ComicNotification {
     @ManyToOne(optional = false)
     @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Notification_Account"))
     private AccountEntity account;
+
+    public ComicNotificationEntity() {
+    }
 
     public AccountEntity getAccount() {
         return account;
@@ -56,11 +60,16 @@ public class ComicNotification {
         this.date = date;
     }
 
-    public Long getNotifiationId() {
-        return notifiationId;
+    public Long getNotificationId() {
+        return notificationId;
     }
 
-    public void setNotifiationId(Long notifiationId) {
-        this.notifiationId = notifiationId;
+    public void setNotificationId(Long notificationId) {
+        this.notificationId = notificationId;
+    }
+
+    @Override
+    public String toString() {
+        return "ComicNotification{}";
     }
 }

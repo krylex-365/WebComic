@@ -3,12 +3,12 @@ package com.example.comicspringmvc.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "FollowComic")
-public class FollowComicEntity {
+@Table(name = "Follow")
+public class FollowEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "FollowComicId")
-    private Long followComicId;
+    @Column(name = "FollowId")
+    private Long followId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Account", foreignKey = @ForeignKey(name = "FK_Follow_Account"))
@@ -18,7 +18,7 @@ public class FollowComicEntity {
     @JoinColumn(name = "Comic", foreignKey = @ForeignKey(name = "FK_Follow_Comic"))
     private ComicEntity comic;
 
-    public FollowComicEntity() {
+    public FollowEntity() {
     }
 
     public ComicEntity getComic() {
@@ -37,18 +37,18 @@ public class FollowComicEntity {
         this.account = account;
     }
 
-    public Long getFollowComicId() {
-        return followComicId;
+    public Long getFollowId() {
+        return followId;
     }
 
-    public void setFollowComicId(Long id) {
-        this.followComicId = id;
+    public void setFollowId(Long id) {
+        this.followId = id;
     }
 
     @Override
     public String toString() {
         return "FollowComicEntity{" +
-                "followComicId=" + followComicId +
+                "followId=" + followId +
                 ", account=" + account +
                 ", comic=" + comic +
                 '}';

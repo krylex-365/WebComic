@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "ComicNotification")
-public class ComicNotificationEntity {
+@Table(name = "Notification")
+public class NotificationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NotificationId")
@@ -14,8 +14,8 @@ public class ComicNotificationEntity {
     @Column(name = "Date", nullable = false)
     private LocalDate date;
 
-    @Column(name = "Status", columnDefinition = "integer default 1")
-    private Integer status = 1;
+    @Column(name = "Status", columnDefinition = "integer default 2")
+    private Integer status = 2;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "ComicId",foreignKey = @ForeignKey(name = "FK_Notification_Comic"))
@@ -25,7 +25,7 @@ public class ComicNotificationEntity {
     @JoinColumn(name = "AccountId",foreignKey = @ForeignKey(name = "FK_Notification_Account"))
     private AccountEntity account;
 
-    public ComicNotificationEntity() {
+    public NotificationEntity() {
     }
 
     public AccountEntity getAccount() {
@@ -70,6 +70,12 @@ public class ComicNotificationEntity {
 
     @Override
     public String toString() {
-        return "ComicNotification{}";
+        return "NotificationEntity{" +
+                "notificationId=" + notificationId +
+                ", date=" + date +
+                ", status=" + status +
+                ", comic=" + comic +
+                ", account=" + account +
+                '}';
     }
 }

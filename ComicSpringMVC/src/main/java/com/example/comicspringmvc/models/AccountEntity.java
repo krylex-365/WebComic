@@ -37,8 +37,9 @@ public class AccountEntity {
     @Column(name = "Status", columnDefinition = "integer default 1", nullable = false)
     private Integer status = 1;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "TranslateTeamId", nullable = true, columnDefinition = "bigint default null", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
+//    @Column(name = "TranslateTeamId", columnDefinition = "bigint default null")
     private TranslateTeamEntity translateTeam;
 
     @ManyToMany(fetch = FetchType.EAGER)

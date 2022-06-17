@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<!--<html lang="en">-->
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Chứng nhận kết quả thi</title>
+    <title>Admin Page</title>
 </head>
 <body>
 <h1>123</h1>
-<h1 th:text="${abc}"></h1>
+
+<h1 th:text="${principal.getUsername()}"></h1>
+<h1 th:text="${principal.getAuthorities()}"></h1>
+
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span></div>
 </body>
 </html>

@@ -31,17 +31,17 @@ public class AccountEntity {
     @Column(name = "Sex")
     private Integer sex;
 
-    @Column(name = "Role", columnDefinition = "integer default 0", nullable = false)
-    private Integer role = 0;
+//    @Column(name = "Role", columnDefinition = "integer default 0", nullable = false)
+//    private Integer role = 0;
 
     @Column(name = "Status", columnDefinition = "integer default 1", nullable = false)
     private Integer status = 1;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "TranslateTeamId", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
+    @JoinColumn(name = "TranslateTeamId", nullable = true, columnDefinition = "bigint default null", foreignKey = @ForeignKey(name = "FK_Account_TranslateTeam"))
     private TranslateTeamEntity translateTeam;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_role_entities",
             joinColumns = @JoinColumn(name = "account_entity_account_id"),
             inverseJoinColumns = @JoinColumn(name = "role_entities_role_id"))
@@ -59,7 +59,7 @@ public class AccountEntity {
     }
 
 
-    public AccountEntity(Long accountId, String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer role, Integer status, TranslateTeamEntity translateTeam, Set<RoleEntity> roles) {
+    public AccountEntity(Long accountId, String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer status, TranslateTeamEntity translateTeam, Set<RoleEntity> roles) {
         this.accountId = accountId;
         this.email = email;
         this.password = password;
@@ -67,7 +67,7 @@ public class AccountEntity {
         this.fullName = fullName;
         this.birthDay = birthDay;
         this.sex = sex;
-        this.role = role;
+//        this.role = role;
         this.status = status;
         this.translateTeam = translateTeam;
         this.roles = roles;
@@ -163,7 +163,7 @@ public class AccountEntity {
                 ", fullName='" + fullName + '\'' +
                 ", birthDay=" + birthDay +
                 ", sex=" + sex +
-                ", role=" + role +
+//                ", role=" + role +
                 ", status=" + status +
                 ", translateTeam=" + translateTeam +
                 '}';

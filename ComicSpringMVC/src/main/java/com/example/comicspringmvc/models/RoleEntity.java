@@ -2,17 +2,15 @@ package com.example.comicspringmvc.models;
 
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Role")
 public class RoleEntity {
     @Id
-    @Column(name = "RoleId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "RoleId")
     private Long roleId;
 
     @Column(name = "RoleName")

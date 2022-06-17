@@ -29,7 +29,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
+        http.authorizeRequests()
+                .antMatchers("/dangky").hasAuthority("ADMIN")
+                .antMatchers("/").permitAll()
+                .and().formLogin();
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/webapp/views/page-error.html");
+//        http.authorizeRequests().anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
     }
 
     @Override

@@ -1,0 +1,75 @@
+
+trang
+
+
+trang chủ
+top view by date
+
+categories
+thêm/sửa/xóa
+danh sách cate
+danh sách truyện theo cate
+
+author
+thêm/sửa/xóa
+danh sách author
+danh sách truyện theo author
+
+comic
+thêm/sửa/xóa
+danh sách comic
+danh sách chapter của comic
+danh sách comment của comic
+danh sách follow của comic
+danh sách truyện theo cate/trạng thái/date
+-------------
+request thêm mới/sửa-xóa comic by account
+danh sách comic by account
+danh sách chapter của comic
+danh sách comment của comic
+danh sách follow của comic
+
+chapter
+thêm/sửa/xóa
+danh sách chapter
+sắp xếp danh sách chapter theo date
+------------
+
+comment
+sửa/xóa
+danh sách comment
+------------
+xóa by comic of account
+danh sách comment
+
+role
+thêm/sửa/xóa
+danh sách role
+
+account
+thêm/sửa/xóa
+danh sách account
+danh sách follow by account
+danh sách noti by account
+-----------
+/info *** /me *** /self
+account
+sửa thông tin
+danh sách follow
+danh sách noti
+
+translate team
+thêm/sửa/xóa
+danh sách team
+thành viên thuộc team
+------------
+sửa thông tin
+thành viên thuộc team
+
+follow
+thêm/sửa/xóa
+danh sách follow
+
+notification
+thêm/sửa/xóa
+danh sách noti

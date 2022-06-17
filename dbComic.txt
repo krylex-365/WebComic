@@ -91,3 +91,17 @@ date
 status
 idComic
 idAccount
+
+-request
+id
+content
+date
+status
+idAccount
+
+-report
+id
+content [Account,ID]/[Chapter,ID]/[Comment,ID] option
+date
+status
+idAccount

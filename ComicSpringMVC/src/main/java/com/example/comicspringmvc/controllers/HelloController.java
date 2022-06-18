@@ -25,7 +25,7 @@ public class HelloController {
 
         System.out.println("test ok");
         model.addAttribute("abc", "test123");
-        model.addAttribute("url", "image.jpg");
+        model.addAttribute("url", "src/main/webapp/image/image.jpg");
         return "test";
     }
 

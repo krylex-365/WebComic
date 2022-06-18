@@ -22,6 +22,7 @@ danh sách chapter của comic
 danh sách comment của comic
 danh sách follow của comic
 danh sách truyện theo cate/trạng thái/date
+tìm kiếm theo thể loại/năm
 -------------
 request thêm mới/sửa-xóa comic by account
 danh sách comic by account
@@ -73,3 +74,9 @@ danh sách follow
 notification
 thêm/sửa/xóa
 danh sách noti
+
+https://stackoverflow.com/questions/23647359/how-do-i-get-the-change-event-for-a-datalist
+https://www.codewall.co.uk/jquery-on-click-function-not-working-after-appending-html/
+$('ul#menu li').length
+https://stackoverflow.com/questions/3287336/best-way-to-submit-ul-via-post
+https://stackoverflow.com/questions/3545341/jquery-get-the-id-value-of-li-element-after-click-function

@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Categories - Thêm Thể loại</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/logo-KK.png">
+
+    <link rel="stylesheet" href="./plugins/jqueryui/css/jquery-ui-1-12-1.css">
+    <!-- Pignose Calender -->
+    <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="./plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="./plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="./plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="./plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/style-custom.css" rel="stylesheet">
+    <script src="./plugins/jquery/jquery-3.6.0-min.js"></script>
+    <script src="./js/js-custom.js"></script>
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="./index.html">
+                    <b class="logo-abbr"><img src="./images/logo-KK.png" alt=""> </b>
+                    <span class="logo-compact"><img src="./images/logo-compact-KK.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="./images/logo-text-KK.png" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content clearfix">
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">Hi</li>
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="./images/user/form-user.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="icon-user"></i> <span>Thông tin cá nhân</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="icon-key"></i> <span>Đăng xuất</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-home menu-icon"></i> <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-tag menu-icon"></i> <span class="nav-text">Quản lý Thể Loại</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-paper-clip menu-icon"></i> <span class="nav-text">Quản lý Tác giả</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-book-open menu-icon"></i> <span class="nav-text">Quản lý Truyện</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-list menu-icon"></i> <span class="nav-text">Quản lý Chapter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-bell menu-icon"></i> <span class="nav-text">Quản lý Thông báo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-speech menu-icon"></i> <span class="nav-text">Quản lý Bình luận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-question menu-icon"></i> <span class="nav-text">Quản lý Yêu cầu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-support menu-icon"></i> <span class="nav-text">Quản lý Báo cáo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-puzzle menu-icon"></i> <span class="nav-text">Quản lý Quyền</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-user menu-icon"></i> <span class="nav-text">Quản lý Người dùng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">
+                            <i class="icon-people menu-icon"></i> <span class="nav-text">Quản lý Nhóm dịch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="icon-screen-tablet menu-icon"></i> <span class="nav-text">Báo cáo thống kê</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        <!--**********************************
+            Content body start
+        ***********************************-->
+
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="./khachhang.html">Quản lý Truyện</a></li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Thêm Truyện</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12 mb-3">
+                                        <a href="./comics.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                    </div>
+                                </div>
+                                <form id="addComic" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-3"><h3>Thông tin truyện</h3></div>
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="comicName">Tên truyện <span class="text-danger">*</span></label>
+                                                        <input type="text" name="categoryName" class="form-control" placeholder="Nhập tên truyện..." required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="status">Tình trạng <span class="text-danger">*</span></label>
+                                                        <select class="form-control" name="status" required>
+                                                            <option value="">-- Chọn tình trạng --</option>
+                                                            <option value="1">Tạm dừng</option>
+                                                            <option value="2">Đang tiến hành</option>
+                                                            <option value="3">Hoàn thành</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="authorName">Thể loại <span class="text-danger">*</span></label>
+                                                        <ul id="categoriesList">
+                                                        </ul>
+                                                        <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
+                                                        <datalist id="categoriesRecommence">
+                                                            <option value="Action">
+                                                            <option value="Romance">
+                                                            <option value="Fantasy">
+                                                            <option value="Adventure">
+                                                            <option value="Drama">
+                                                        </datalist>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="authorName">Tác giả <span class="text-danger">*</span></label>
+                                                        <ul id="authorsList">
+                                                        </ul>
+                                                        <input id="authorInput" list="authorsRecommence" type="text" class="form-control" placeholder="Nhập tác giả...">
+                                                        <datalist id="authorsRecommence">
+                                                            <option value="Edge">
+                                                            <option value="Firefox">
+                                                            <option value="Chrome">
+                                                            <option value="Opera">
+                                                            <option value="Safari">
+                                                        </datalist>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="description">Nội dung <span class="text-danger">*</span></label>
+                                                        <textarea class="form-control h-150px" rows="4"
+                                                                  form="addComic" name="description" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ngay">Ngày phát hành <span class="text-danger">*</span></label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ngay">Ngày kết thúc <span class="text-danger">(Không bắt buộc)</span></label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="thumbnail">Ảnh bìa <span class="text-danger">*</span></label>
+                                                        <input type="file" name="thumbnail" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-12 td-center">
+                                            <button type="submit" class="btn btn-primary">Thêm truyện</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script>
+        function checkDel() {
+            if ($("#checkBoxAll").is(":checked")) {
+                $(".chkCheckBoxId").prop("checked", true);
+                $("#btnDel").prop("disabled", false);
+            }
+            else {
+                $(".chkCheckBoxId").prop("checked", false);
+                $("#btnDel").prop("disabled", true);
+            }
+        }
+        function checkSingleDel() {
+            if ($(".chkCheckBoxId").is(":checked")) {
+                $("#btnDel").prop("disabled", false);
+            }
+            else {
+                $("#btnDel").prop("disabled", true);
+            }
+        }
+        $(document).keypress(
+            function (event) {
+                if (event.which == '13') {
+                    console.log('abc');
+                    event.preventDefault();
+                }
+            });
+        $(document).on('change', 'input', function () {
+            if ($(this).is("#authorInput")) {
+                //console.log($(this));
+                var val = $(this).val();
+                var listItems = $("#authorsList").find("li");
+                if (listItems.length > 0) {
+                    for (j = 0; j < listItems.length; j++) {
+                        if ($(listItems[j]).text() === val) {
+                            $("#authorInput").val("");
+                            return;
+                        }
+                    }
+                }
+                $("#authorsList").append('<li class="remove-Author">' + val + '<input type="hidden" name="authors[]" value="' + val + '"/></li>');
+                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+                $("#authorInput").val("");
+            } else if ($(this).is("#categoryInput")) {
+                //console.log($(this));
+                var val = $(this).val();
+                var listItems = $("#categoriesList").find("li");
+                if (listItems.length > 0) {
+                    for (j = 0; j < listItems.length; j++) {
+                        if ($(listItems[j]).text() === val) {
+                            $("#categoryInput").val("");
+                            return;
+                        }
+                    }
+                }
+                $("#categoriesList").append('<li class="remove-Category">' + val + '<input type="hidden" name="categories[]" value="' + val + '"/></li>');
+                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+                $("#categoryInput").val("");
+            }
+            /*var options = $('#authorsRecommence')[0].options;
+            
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === val) {
+                    
+                    break;
+                }
+            }*/
+        });
+        $("body").on("click", ".remove-Author", function () {
+            $(this).remove();
+        });
+        $("body").on("click", ".remove-Category", function () {
+            $(this).remove();
+        });
+        /*$(document).ready(function () {
+            $(".remove-Author").on('click', function () {
+                $(this).remove();
+            });
+        });*/
+    </script>
+
+    <script src="./plugins/common/common.min.js"></script>
+    <script src="./js/custom.min.js"></script>
+    <script src="./js/settings.js"></script>
+    <script src="./js/gleek.js"></script>
+    <script src="./js/styleSwitcher.js"></script>
+
+    <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
+    <script src="./plugins/moment/moment.js"></script>
+    <script src="./plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="./plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="./plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="./plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="./plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="./plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Form Picker Init JavaScript -->
+    <script src="./js/plugins-init/form-pickers-init.js"></script>
+
+    <!-- jQuery UI library -->
+    <script src="./plugins/jqueryui/js/jquery-ui-1-12-1.js"></script>
+</body>
+
+</html>

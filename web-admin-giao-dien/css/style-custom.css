@@ -53,7 +53,7 @@ font-weight: bold;
 text-align: center;
 }
 
-.card {
+.container-fluid>.row>.col-md-12>.card {
 box-shadow: 0px 12px 30px -5px #a9a9a9 !important;
 }
 
@@ -120,10 +120,15 @@ ul#authorsList li, ul#categoriesList li {
 }
 #authorsList li, #categoriesList li {
   margin: 0px 5px;
-  padding: 5px 5px;
+  padding: 5px 10px;
   background-color: #49ef5a;
+  border: 1px solid #181E24;
+  border-radius: 20px;
 }
 #authorsList li:hover, #categoriesList li:hover {
   background-color: #e75757;
   color: #f8f9fa;
+}
+form .error, form .errors {
+  color: #e75757;
 }

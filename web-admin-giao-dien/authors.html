@@ -190,7 +190,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void()">Dashboard</a></li>
-                        <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Thể loại</li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Tác giả</li>
                     </ol>
                 </div>
             </div>
@@ -203,11 +203,11 @@
                             <div class="card-body">
                                 <div class="card-title row">
                                     <div class="col-md-12 mb-4">
-                                        <h3 class="td-center">DANH SÁCH THỂ LOẠI</h3>
+                                        <h3 class="td-center">DANH SÁCH TÁC GIẢ</h3>
                                     </div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
-                                        <a href="./categoryAdd.html" style="float:right;">
+                                        <a href="./authorAdd.html" style="float:right;">
                                             <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
                                         </a>
                                     </div>
@@ -218,7 +218,7 @@
                                             <tr>
                                                 <th style="width:10%; min-width:80px;" class="th-center-bold">#</th>
                                                 <th style="width:15%; min-width:80px;" class="th-center-bold">ID</th>
-                                                <th style="width:30%; min-width:150px;" class="th-center-bold">Tên thể loại</th>
+                                                <th style="width:30%; min-width:150px;" class="th-center-bold">Tên tác giả</th>
                                                 <th style="width:15%; min-width:50px;" class="th-center-bold">Số truyện</th>
                                                 <th style="width:10%; min-width:50px;" class="th-center-bold">Chi tiết</th>
                                                 <th style="width:10%; min-width:50px;" class="th-center-bold">Sửa</th>
@@ -238,13 +238,13 @@
                                                 </td>
                                                 <td class="td-center">
                                                     <form method="post">
-                                                        <input value="categoryId" type="hidden" name="id" />
+                                                        <input value="authorId" type="hidden" name="id" />
                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
                                                     </form>
                                                 </td>
                                                 <td class="td-center">
                                                     <a>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelCategoryId"><i class="fa fa-close"></i></button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelAuthorId"><i class="fa fa-close"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>

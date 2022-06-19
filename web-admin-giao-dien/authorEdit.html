@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Categories - Thêm Thể loại</title>
+    <title>Categories - Sửa Thể loại</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -28,7 +28,6 @@
     <link href="./css/style-custom.css" rel="stylesheet">
     <script src="./plugins/jquery/jquery-3.6.0-min.js"></script>
     <script src="./js/js-custom.js"></script>
-    <script src="./plugins/validation/jquery.validate.min.1.19.3.js"></script>
 </head>
 
 <body>
@@ -191,8 +190,8 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="./comics.html">Quản lý Truyện</a></li>
-                        <li class="breadcrumb-item active" style="font-weight: bold">Thêm Truyện</li>
+                        <li class="breadcrumb-item"><a href="./authors.html">Quản lý Tác giả</a></li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Sửa Tác giả</li>
                     </ol>
                 </div>
             </div>
@@ -205,88 +204,24 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
-                                        <a href="./comics.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                        <a href="./authors.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
                                     </div>
                                 </div>
-                                <form id="addComic" name="comicAdd" method="get">
+                                <form method="post">
                                     <div class="row">
-                                        <div class="col-lg-12 mb-3"><h3>Thông tin truyện</h3></div>
+                                        <div class="col-lg-12 mb-3"><h3>Thông tin tác giả</h3></div>
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="comicName">Tên truyện <span class="text-danger">*</span></label>
-                                                        <input type="text" name="comicName" class="form-control" placeholder="Nhập tên truyện..." required>
+                                                        <label for="authorId">Mã tác giả <span class="text-danger">*</span></label>
+                                                        <input type="text" value="1" class="form-control" name="authorId" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="status">Tình trạng <span class="text-danger">*</span></label>
-                                                        <select class="form-control" name="status" required>
-                                                            <option value="">-- Chọn tình trạng --</option>
-                                                            <option value="1">Tạm dừng</option>
-                                                            <option value="2">Đang tiến hành</option>
-                                                            <option value="3">Hoàn thành</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label id="categoryName" for="categoryName">Thể loại <span class="text-danger">*</span></label>
-                                                        <ul id="categoriesList">
-                                                        </ul>
-                                                        <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
-                                                        <datalist id="categoriesRecommence">
-                                                            <option value="Action">
-                                                            <option value="Romance">
-                                                            <option value="Fantasy">
-                                                            <option value="Adventure">
-                                                            <option value="Drama">
-                                                        </datalist>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label id="authorName" for="authorName">Tác giả <span class="text-danger">*</span></label>
-                                                        <ul id="authorsList">
-                                                        </ul>
-                                                        <input id="authorInput" list="authorsRecommence" type="text" class="form-control" placeholder="Nhập tác giả...">
-                                                        <datalist id="authorsRecommence">
-                                                            <option value="Edge">
-                                                            <option value="Firefox">
-                                                            <option value="Chrome">
-                                                            <option value="Opera">
-                                                            <option value="Safari">
-                                                        </datalist>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="description">Nội dung <span class="text-danger">*</span></label>
-                                                        <textarea class="form-control h-150px" rows="4"
-                                                                  form="addComic" name="description" required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ngay">Ngày phát hành <span class="text-danger">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ngay">Ngày kết thúc <span class="text-danger">(Không bắt buộc)</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="thumbnail">Ảnh bìa <span class="text-danger">*</span></label>
-                                                        <input type="file" name="thumbnail" class="form-control" required>
+                                                        <label for="name">Tên tác giả <span class="text-danger">*</span></label>
+                                                        <input type="text" value="Abe Abe" name="authorName" class="form-control" placeholder="Nhập tên tác giả..." required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -294,7 +229,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-12 td-center">
-                                            <button type="submit" class="btn btn-primary submit">Thêm truyện</button>
+                                            <button type="submit" class="btn btn-primary">Sửa tác giả</button>
                                         </div>
                                     </div>
                                 </form>
@@ -346,132 +281,6 @@
                 $("#btnDel").prop("disabled", true);
             }
         }
-        $(document).keypress(
-            function (event) {
-                if (event.which == '13') {
-                    console.log('abc');
-                    event.preventDefault();
-                }
-            });
-        $('form').on('submit', function () {
-            var listItemsCate = $("#categoriesList").find("li");
-            if (listItemsCate.length < 1) {
-                $('#categoryName').html('Thể loại <span class="text-danger">*</span>  <span class="errors">Hãy chọn thể loại</span>');
-                //e.preventDefault();
-            }
-            var listItemsAuth = $('#authorsList').find('li');
-            if (listItemsAuth.length < 1) {
-                $('#authorName').html('Tác giả <span class="text-danger">*</span>  <span class="errors">Hãy chọn tác giả</span>');
-                //e.preventDefault();
-            }
-            /*console.log($('.errors').length);
-            if ($('.errors').length > 0) {
-                console.log($('.errors').length);
-                e.preventDefault();
-                return false;
-            }*/
-        });
-        $('body').on('change', 'input', function () {
-            if ($(this).is("#authorInput")) {
-                $('#authorName').html('Tác giả <span class="text-danger">*</span>');
-                //console.log($(this));
-                var val = $(this).val();
-                var listItems = $("#authorsList").find("li");
-                if (listItems.length > 0) {
-                    for (j = 0; j < listItems.length; j++) {
-                        if ($(listItems[j]).text() === val) {
-                            $("#authorInput").val("");
-                            return;
-                        }
-                    }
-                }
-                $("#authorsList").append('<li class="remove-Author">' + val + '<input type="hidden" name="authors[]" value="' + val + '"/></li>');
-                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
-                $("#authorInput").val("");
-            } else if ($(this).is("#categoryInput")) {
-                $('#categoryName').html('Thể loại <span class="text-danger">*</span>');
-                //$('.error-category').remove();
-                //console.log($(this));
-                var val = $(this).val();
-                var listItems = $("#categoriesList").find("li");
-                if (listItems.length > 0) {
-                    for (j = 0; j < listItems.length; j++) {
-                        if ($(listItems[j]).text() === val) {
-                            $("#categoryInput").val("");
-                            return;
-                        }
-                    }
-                }
-                $("#categoriesList").append('<li class="remove-Category">' + val + '<input type="hidden" name="categories[]" value="' + val + '"/></li>');
-                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
-                $("#categoryInput").val("");
-            }
-            /*var options = $('#authorsRecommence')[0].options;
-            
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].value === val) {
-                    
-                    break;
-                }
-            }*/
-        });
-        $("body").on("click", ".remove-Author", function () {
-            $(this).remove();
-        });
-        $("body").on("click", ".remove-Category", function () {
-            $(this).remove();
-        });
-        /*$(document).ready(function () {
-            $(".remove-Author").on('click', function () {
-                $(this).remove();
-            });
-        });*/
-        $("form[name='comicAdd']").validate({
-            // Specify validation rules
-            rules: {
-                // The key name on the left side is the name attribute
-                // of an input field. Validation rules are defined
-                // on the right side
-                /*comicName: {
-                    required: true,
-                    minlength: 1
-                },*/
-                //"authors[]": "required",
-                /*lastname: "required",
-                email: {
-                    required: true,
-                    // Specify that email should be validated
-                    // by the built-in "email" rule
-                    email: true
-                },
-                password: {
-                    required: true,
-                    minlength: 5
-                }*/
-            },
-            messages: {
-                comicName: "Tên truyện không được bỏ trống",
-                status: "Hãy chọn tình trạng truyện",
-                description: "Nội dung truyện không được bỏ trống",
-                dateFrom: "Ngày phát hành không được bỏ trống",
-                thumbnail: "Ảnh bìa không được bỏ trống",
-                //"authors[]": "Please choose comic author",
-                /*lastname: "Please enter your lastname",
-                password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 5 characters long"
-                },
-                email: "Please enter a valid email address"*/
-            },
-            submitHandler: function (form) {
-                if ($('.errors').length > 0) {
-                    console.log($('.errors').length);
-                    isValid = 0;
-                } else {
-                    form.submit();
-                }
-            }
-        });
     </script>
 
     <script src="./plugins/common/common.min.js"></script>

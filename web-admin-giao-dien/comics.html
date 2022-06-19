@@ -26,6 +26,8 @@
     <link href="./plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/style-custom.css" rel="stylesheet">
+    <script src="./plugins/jquery/jquery-3.6.0-min.js"></script>
+    <script src="./js/js-custom.js"></script>
 </head>
 
 <body>
@@ -210,6 +212,81 @@
                                         </a>
                                     </div>
                                 </div>
+                                <div id="accordion-three" class="accordion">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne4"><i class="fa" aria-hidden="true"></i> Tìm kiếm nâng cao</h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" data-parent="#accordion-three">
+                                            <div class="card-body">
+                                                <form method="get">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="status">Tình trạng</label>
+                                                                <select class="form-control" name="status">
+                                                                    <option value="">-- Chọn tình trạng --</option>
+                                                                    <option value="1">Tạm dừng</option>
+                                                                    <option value="2">Đang tiến hành</option>
+                                                                    <option value="3">Hoàn thành</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="year">Năm phát hành</label>
+                                                                <select class="form-control" name="year">
+                                                                    <option value="">-- Chọn năm --</option>
+                                                                    <option value="2015">2015</option>
+                                                                    <option value="2016">2016</option>
+                                                                    <option value="2017">2017</option>
+                                                                    <option value="2018">2018</option>
+                                                                    <option value="2019">2019</option>
+                                                                    <option value="2020">2020</option>
+                                                                    <option value="2021">2021</option>
+                                                                    <option value="2022">2022</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="authorName">Thể loại</label>
+                                                                <ul id="categoriesList">
+                                                                </ul>
+                                                                <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
+                                                                <datalist id="categoriesRecommence">
+                                                                    <option value="Action">
+                                                                    <option value="Romance">
+                                                                    <option value="Fantasy">
+                                                                    <option value="Adventure">
+                                                                    <option value="Drama">
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="authorName">Tác giả</label>
+                                                                <ul id="authorsList">
+                                                                </ul>
+                                                                <input id="authorInput" list="authorsRecommence" type="text" class="form-control" placeholder="Nhập tác giả...">
+                                                                <datalist id="authorsRecommence">
+                                                                    <option value="Edge">
+                                                                    <option value="Firefox">
+                                                                    <option value="Chrome">
+                                                                    <option value="Opera">
+                                                                    <option value="Safari">
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 td-center form-group">
+                                                            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table id="DataTable" class="table table-bordered table-hover zero-configuration">
                                         <thead class="text-primary">
@@ -347,6 +424,60 @@
                 $("#btnDel").prop("disabled", true);
             }
         }
+        $(document).keypress(
+            function (event) {
+                if (event.which == '13') {
+                    console.log('abc');
+                    event.preventDefault();
+                }
+            });
+        $(document).on('change', 'input', function () {
+            if ($(this).is("#authorInput")) {
+                //console.log($(this));
+                var val = $(this).val();
+                var listItems = $("#authorsList").find("li");
+                if (listItems.length > 0) {
+                    for (j = 0; j < listItems.length; j++) {
+                        if ($(listItems[j]).text() === val) {
+                            $("#authorInput").val("");
+                            return;
+                        }
+                    }
+                }
+                $("#authorsList").append('<li class="remove-Author">' + val + '<input type="hidden" name="authors[]" value="' + val + '"/></li>');
+                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+                $("#authorInput").val("");
+            } else if ($(this).is("#categoryInput")) {
+                //console.log($(this));
+                var val = $(this).val();
+                var listItems = $("#categoriesList").find("li");
+                if (listItems.length > 0) {
+                    for (j = 0; j < listItems.length; j++) {
+                        if ($(listItems[j]).text() === val) {
+                            $("#categoryInput").val("");
+                            return;
+                        }
+                    }
+                }
+                $("#categoriesList").append('<li class="remove-Category">' + val + '<input type="hidden" name="categories[]" value="' + val + '"/></li>');
+                //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+                $("#categoryInput").val("");
+            }
+            /*var options = $('#authorsRecommence')[0].options;
+            
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === val) {
+                    
+                    break;
+                }
+            }*/
+        });
+        $("body").on("click", ".remove-Author", function () {
+            $(this).remove();
+        });
+        $("body").on("click", ".remove-Category", function () {
+            $(this).remove();
+        });
     </script>
 
     <script src="./plugins/common/common.min.js"></script>
@@ -354,9 +485,6 @@
     <script src="./js/settings.js"></script>
     <script src="./js/gleek.js"></script>
     <script src="./js/styleSwitcher.js"></script>
-
-    <script src="./plugins/jquery/jquery.min.js"></script>
-    <script src="./js/js-custom.js"></script>
 
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>

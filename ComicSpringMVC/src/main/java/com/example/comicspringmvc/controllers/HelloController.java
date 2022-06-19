@@ -5,9 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.websocket.server.PathParam;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Controller
 //@RequestMapping(path = "/hello")
@@ -41,5 +49,35 @@ public class HelloController {
     public String admin(Authentication authentication, Model model) {
         model.addAttribute("principal", authentication.getPrincipal());
         return "admin";
+    }
+
+    @PostMapping("/upload/image/{mangaid}/{chapter}")
+    public String saveUser(@PathVariable("mangaid") int mangaid, @PathVariable("chapter") String chapter, @RequestParam("image") MultipartFile[] multipartFile, RedirectAttributes redirectAttributes) throws IOException {
+
+
+        if(mangaid==1){ // check thêm id manga có phải thuộc về user này hay không // check thêm luôn truyện này có trong db không
+            String uploadDir = "src/main/resources/static/manga/chapter/1/";
+            File theDir = new File(uploadDir);
+            if (!theDir.exists()){
+                System.out.println("exist");
+                theDir.mkdirs();
+            }
+
+            for(int i = 0; i < multipartFile.length;i ++){
+                String fileName = i + ".jpg";
+                byte[] bytes = multipartFile[i].getBytes();
+                String insPath = uploadDir + fileName;
+                Files.write(Paths.get(insPath),bytes);
+            }
+
+
+        }else{
+
+        }
+        String uploadDir = "manga/";
+
+//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        return "redirect:/dangky";
     }
 }

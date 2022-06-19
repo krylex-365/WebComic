@@ -6,10 +6,155 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Chứng nhận kết quả thi</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .container {
+            position: relative;
+            max-width: 150px;
+            max-height: 270px;
+            align-items: center;
+        }
+
+        .text-block {
+            position: absolute;
+            align-content: center;
+            bottom: 33%;
+            right: 33%;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1>123</h1>
 <h1 th:text="${abc}"></h1>
-<img th:src="@{/image.jpg}"/>
+<!--<img th:src="@{/chapter/manga/image2.jpg}"/>-->
+<!--<img th:src="@{/chapter/image.jpg}"/>-->
+<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(this)" multiple></p>
+<p><label for="file" style="cursor: pointer;" >Upload Image</label></p>
+<!--<p><img id="output" width="200" /></p>-->
+<p><button onclick="submit()">Submit</button><span><button onclick="reset()">Reset</button></span></p>
+
+<div id="image-container">
+
+</div>
+
+<script>
+    var count = 0;
+    var countImage = 0;
+    var map = new Map();
+    var set = new Set();
+
+    var reset = () => {
+        $(".text-block").remove();
+        count = 0;
+        map.clear();
+    }
+
+    var mark = (self) => {
+        // var files = document.getElementById("file").files;
+        // var innerdiv = document.createElement("div");
+        // innerdiv.setAttribute("class","text-block");
+        //
+        // var h1 = document.createElement("h1");
+        // var textNode = document.createTextNode(count);
+        // h1.appendChild(textNode);
+        // innerdiv.appendChild(h1);
+        // self.appendChild(innerdiv);
+
+        if(self.getElementsByClassName('text-block')!=null){
+            var listItemsCate = $(self).find("div");
+            if($(listItemsCate).is('.text-block')){
+                return;
+            }
+            var innerdiv = document.createElement("div");
+            innerdiv.setAttribute("class","text-block");
+
+            var h1 = document.createElement("h1");
+            var textNode = document.createTextNode(count);
+            h1.appendChild(textNode);
+            innerdiv.appendChild(h1);
+            self.appendChild(innerdiv);
+        }
+
+        console.log(self.getElementsByClassName('text-block'));
+
+
+
+        console.log(listItemsCate);
+
+        // if(self.hasClass("text-block"))console.log()
+
+        // if(files.length<map.size){
+        //
+        // }
+
+        map.set(count,self.getAttribute("value"));
+        count++;
+    }
+    var loadFile = function(input) {
+        // var image = document.getElementById('output');
+        // image.src = URL.createObjectURL(event.target.files[0]);
+        var file = input.files;
+
+        console.log(file);
+
+
+        for(var i = 0; i < file.length; i++){
+            var div = document.createElement("div");
+            div.setAttribute("class","container");
+            div.setAttribute("onclick","mark(this)");
+            div.setAttribute("value",countImage);
+            countImage++;
+
+            var images = document.createElement("img");
+            images.src=URL.createObjectURL(file.item(i));
+            // images.id="chapter-image";
+            // images.setAttribute("onclick","mark(this)");
+            // imgaes.value=i;
+            var element = document.getElementById("image-container");
+            div.appendChild(images)
+            element.appendChild(div);
+        }
+
+        // for(var i = 0; i < file.length; i++){
+        //     var images = document.createElement("img");
+        //     images.src=URL.createObjectURL();
+        //     var element = document.getElementById("image-container");
+        //     element.appendChild(images);
+        // }
+    };
+    var submit = () =>{
+        var form = new FormData();
+        var files = document.getElementById("file").files;
+
+
+        var List = [].slice.call(files);
+
+
+        // var list = document.getElementById("chapter-image");
+
+        // console.log(list.item(0).files);
+
+        for(var i = 0; i < List.length; i++){
+            console.log(map.get(i));
+            form.append("image",List[map.get(i)]);
+        }
+
+
+        // for(var i = 0; i < map.length; i++){
+        //     form.append("image",map.get(i));
+        // }
+
+
+
+        // console.log("keys",form.keys());
+        //
+        // console.log(files.length);
+        // fetch('/upload/image/1/1', {method: "POST",body: form})
+    }
+</script>
 </body>
 </html>

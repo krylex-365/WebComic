@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Comics</title>
+    <title>Chapters</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -189,7 +189,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void()">Dashboard</a></li>
-                        <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Truyện</li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Chương truyện</li>
                     </ol>
                 </div>
             </div>
@@ -202,11 +202,11 @@
                             <div class="card-body">
                                 <div class="card-title row">
                                     <div class="col-md-12 mb-4">
-                                        <h3 class="td-center">DANH SÁCH TRUYỆN</h3>
+                                        <h3 class="td-center">DANH SÁCH CHƯƠNG TRUYỆN</h3>
                                     </div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
-                                        <a href="./comicAdd.html" style="float:right;">
+                                        <a href="./chapterAdd.html" style="float:right;">
                                             <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
                                         </a>
                                     </div>
@@ -220,61 +220,35 @@
                                             <div class="card-body">
                                                 <form method="get">
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="status">Tình trạng</label>
-                                                                <select class="form-control" name="status">
-                                                                    <option value="">-- Chọn tình trạng --</option>
-                                                                    <option value="1">Tạm dừng</option>
-                                                                    <option value="2">Đang tiến hành</option>
-                                                                    <option value="3">Hoàn thành</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="year">Năm phát hành</label>
-                                                                <select class="form-control" name="year">
-                                                                    <option value="">-- Chọn năm --</option>
-                                                                    <option value="2015">2015</option>
-                                                                    <option value="2016">2016</option>
-                                                                    <option value="2017">2017</option>
-                                                                    <option value="2018">2018</option>
-                                                                    <option value="2019">2019</option>
-                                                                    <option value="2020">2020</option>
-                                                                    <option value="2021">2021</option>
-                                                                    <option value="2022">2022</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="authorName">Thể loại</label>
-                                                                <ul id="categoriesList">
+                                                                <label for="comicName">Truyện</label>
+                                                                <ul id="comicsList">
                                                                 </ul>
-                                                                <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
-                                                                <datalist id="categoriesRecommence">
-                                                                    <option value="Action">
-                                                                    <option value="Romance">
-                                                                    <option value="Fantasy">
-                                                                    <option value="Adventure">
-                                                                    <option value="Drama">
+                                                                <input id="comicInput" list="comicsRecommence" type="text" class="form-control" placeholder="Nhập tên truyện...">
+                                                                <datalist id="comicsRecommence">
+                                                                    <option value="Truyen Abc">
+                                                                    <option value="Truyen xlqp">
+                                                                    <option value="Truyen lllllll">
+                                                                    <option value="Truyen rekam">
+                                                                    <option value="Truyen mlap">
                                                                 </datalist>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="authorName">Tác giả</label>
-                                                                <ul id="authorsList">
-                                                                </ul>
-                                                                <input id="authorInput" list="authorsRecommence" type="text" class="form-control" placeholder="Nhập tác giả...">
-                                                                <datalist id="authorsRecommence">
-                                                                    <option value="Edge">
-                                                                    <option value="Firefox">
-                                                                    <option value="Chrome">
-                                                                    <option value="Opera">
-                                                                    <option value="Safari">
-                                                                </datalist>
+                                                                <label for="ngay">Từ</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="ngay">Đến</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12 td-center form-group">
@@ -290,14 +264,12 @@
                                     <table id="DataTable" class="table table-bordered table-hover zero-configuration">
                                         <thead class="text-primary">
                                             <tr>
-                                                <th style="width:5%; min-width:70px;" class="th-center-bold">#</th>
-                                                <th style="width:5%; min-width:70px;" class="th-center-bold">ID</th>
-                                                <th style="width:15%; min-width:100px;" class="th-center-bold">Bìa</th>
+                                                <th style="width:10%; min-width:70px;" class="th-center-bold">#</th>
+                                                <th style="width:10%; min-width:70px;" class="th-center-bold">ID</th>
+                                                <th style="width:15%; min-width:100px;" class="th-center-bold">Chương</th>
                                                 <th style="width:20%; min-width:150px;" class="th-center-bold">Tên truyện</th>
-                                                <th style="width:12%; min-width:100px;" class="th-center-bold">Thể loại</th>
-                                                <th style="width:12%; min-width:100px;" class="th-center-bold">Tác giả</th>
-                                                <th style="width:8%; min-width:60px;" class="th-center-bold">Số chapter</th>
-                                                <th style="width:8%; min-width:60px;" class="th-center-bold">Tình trạng</th>
+                                                <th style="width:15%; min-width:80px;" class="th-center-bold">Số trang</th>
+                                                <th style="width:15%; min-width:100px;" class="th-center-bold">Ngày đăng</th>
                                                 <th style="width:5%; min-width:40px;" class="th-center-bold">Chi tiết</th>
                                                 <th style="width:5%; min-width:40px;" class="th-center-bold">Sửa</th>
                                                 <th style="width:5%; min-width:40px;" class="th-center-bold">Xóa</th>
@@ -307,12 +279,10 @@
                                             <tr>
                                                 <td class="td-center">1</td>
                                                 <td class="td-center">1</td>
-                                                <td class="td-center"><img src="./images/comics_img/comic_1.jpg" style="width:100px;"></td>
+                                                <td class="td-center">1</td>
                                                 <td>Naze Boku no Sekai wo Daremo Oboeteinai no ka?</td>
-                                                <td>Action - Drama - Shounen - Blabla - Fantasy</td>
-                                                <td>ABC</td>
                                                 <td class="td-center">42</td>
-                                                <td class="td-center">Hoàn thành</td>
+                                                <td class="td-center">12/24/2021</td>
                                                 <td class="td-center">
                                                     <a href="#">
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChiTietKH"><i class="fa fa-info"></i></button>
@@ -333,12 +303,10 @@
                                             <tr>
                                                 <td class="td-center">2</td>
                                                 <td class="td-center">2</td>
-                                                <td class="td-center"><img src="./images/comics_img/comic_2.jpg" style="width:100px;"></td>
+                                                <td class="td-center">1</td>
                                                 <td>Tensei Shitara Suraimu datta Kudan</td>
-                                                <td>Action - Drama - Shounen - Isekai - Fantasy</td>
-                                                <td>ABC</td>
                                                 <td class="td-center">78</td>
-                                                <td class="td-center">Đang cập nhật</td>
+                                                <td class="td-center">12/26/2022</td>
                                                 <td class="td-center">
                                                     <a href="#">
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChiTietKH"><i class="fa fa-info"></i></button>
@@ -352,7 +320,7 @@
                                                 </td>
                                                 <td class="td-center">
                                                     <a>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#XoaKhachHangId"><i class="fa fa-close"></i></button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelChapterId"><i class="fa fa-close"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -363,7 +331,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="XoaKhachHangId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="DelChapterId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">

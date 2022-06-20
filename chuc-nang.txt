@@ -80,3 +80,4 @@ https://www.codewall.co.uk/jquery-on-click-function-not-working-after-appending-
 $('ul#menu li').length
 https://stackoverflow.com/questions/3287336/best-way-to-submit-ul-via-post
 https://stackoverflow.com/questions/3545341/jquery-get-the-id-value-of-li-element-after-click-function
+https://stackoverflow.com/questions/4805933/jquery-remove-direct-child-element

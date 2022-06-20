@@ -115,20 +115,72 @@ box-shadow: 0px 12px 30px -5px #a9a9a9 !important;
             color: #f8f9fa !important;
         }
 
-ul#authorsList li, ul#categoriesList li {
+ul#authorsList li, ul#categoriesList li, ul#comicsList li, ul#container-images li {
   display:inline;
 }
-#authorsList li, #categoriesList li {
+#authorsList li, #categoriesList li, #comicsList li {
   margin: 0px 5px;
   padding: 5px 10px;
   background-color: #49ef5a;
   border: 1px solid #181E24;
   border-radius: 20px;
 }
-#authorsList li:hover, #categoriesList li:hover {
+#authorsList li:hover, #categoriesList li:hover, #comicsList li:hover {
   background-color: #e75757;
   color: #f8f9fa;
 }
 form .error, form .errors {
   color: #e75757;
+}
+
+#container-ul {
+  background-color: #464a53;
+  margin-top: 10px;
+}
+#container-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul#container-images li {
+  position: relative;
+  padding: 5px;
+  margin: auto;
+}
+.container-image:hover~.del-img-block {
+  display: block;
+}
+
+.container-image {
+  
+}        
+
+.text-block {
+  position: absolute;
+    top: 1%;
+    left: 1%;
+    background-color: #f8f9fa !important;
+    color: #181e24 !important;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #ff5e5e;
+}
+.del-img-block {
+  display: none;
+  position: absolute;
+    top: 1%;
+    right: 1%;
+    background-color: #f8f9fa;
+    color: #181e24;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #ff5e5e;
+}
+.del-img-block:hover {
+  display: block;
+  background-color: #ff5e5e;
+  color: #f8f9fa;
+}
+#chapterImages {
+  border: 1px solid #181E24;
+  border-radius: 0.25rem;
 }

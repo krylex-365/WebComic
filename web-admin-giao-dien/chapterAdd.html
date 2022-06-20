@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Comic - Thêm Truyện</title>
+    <title>Chapter - Thêm Chương</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -190,8 +190,8 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="./comics.html">Quản lý Truyện</a></li>
-                        <li class="breadcrumb-item active" style="font-weight: bold">Thêm Truyện</li>
+                        <li class="breadcrumb-item"><a href="./comics.html">Quản lý Chương</a></li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Thêm Chương</li>
                     </ol>
                 </div>
             </div>
@@ -204,88 +204,62 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
-                                        <a href="./comics.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                        <a href="./chapters.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
                                     </div>
                                 </div>
-                                <form id="comicAdd" name="comicAdd" method="get">
+                                <form id="chapterAdd" name="chapterAdd" method="get">
                                     <div class="row">
-                                        <div class="col-lg-12 mb-3"><h3>Thông tin truyện</h3></div>
+                                        <div class="col-lg-12 mb-3"><h3>Thông tin chương</h3></div>
                                         <div class="col-lg-12">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="comicName">Tên truyện <span class="text-danger">*</span></label>
-                                                        <input type="text" name="comicName" class="form-control" placeholder="Nhập tên truyện..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="status">Tình trạng <span class="text-danger">*</span></label>
-                                                        <select class="form-control" name="status" required>
-                                                            <option value="">-- Chọn tình trạng --</option>
-                                                            <option value="1">Tạm dừng</option>
-                                                            <option value="2">Đang tiến hành</option>
-                                                            <option value="3">Hoàn thành</option>
+                                                        <label for="chapterAddComicName">Tên truyện</label>
+                                                        <input id="chapterAddComicInput" list="chapterAddComicsRecommence" type="text" class="form-control" placeholder="Nhập tên truyện...">
+                                                        <datalist id="chapterAddComicsRecommence">
+                                                            <option value="Truyen Abc">
+                                                            <option value="Truyen xlqp">
+                                                            <option value="Truyen lllllll">
+                                                            <option value="Truyen rekam">
+                                                            <option value="Truyen mlap">
+                                                        </datalist>
+                                                        <select id="chapterAddComicSelect" class="form-control" name="comicId">
+                                                            <option value="">-- Chọn truyện --</option>
+                                                            <option value="1">Truyen Abc</option>
+                                                            <option value="2">Truyen xlqp</option>
+                                                            <option value="3">Truyen lllllll</option>
+                                                            <option value="4">Truyen rekam</option>
+                                                            <option value="5">Truyen mlap</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label id="categoryName" for="categoryName">Thể loại <span class="text-danger">*</span></label>
-                                                        <ul id="categoriesList">
-                                                        </ul>
-                                                        <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
-                                                        <datalist id="categoriesRecommence">
-                                                            <option value="Action">
-                                                            <option value="Romance">
-                                                            <option value="Fantasy">
-                                                            <option value="Adventure">
-                                                            <option value="Drama">
-                                                        </datalist>
+                                                        <label for="comicName">Chương số <span class="text-danger">*</span></label>
+                                                        <input type="number" name="chapterNum" class="form-control" placeholder="Nhập chương (số)...">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label id="authorName" for="authorName">Tác giả <span class="text-danger">*</span></label>
-                                                        <ul id="authorsList">
-                                                        </ul>
-                                                        <input id="authorInput" list="authorsRecommence" type="text" class="form-control" placeholder="Nhập tác giả...">
-                                                        <datalist id="authorsRecommence">
-                                                            <option value="Edge">
-                                                            <option value="Firefox">
-                                                            <option value="Chrome">
-                                                            <option value="Opera">
-                                                            <option value="Safari">
-                                                        </datalist>
+                                                        <label for="comicName">Tên chương <span class="text-danger">(Không bắt buộc)</span></label>
+                                                        <input type="text" name="chapterName" class="form-control" placeholder="Nhập tên chương...">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="description">Nội dung <span class="text-danger">*</span></label>
-                                                        <textarea class="form-control h-150px" rows="4"
-                                                                  form="addComic" name="description" required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ngay">Ngày phát hành <span class="text-danger">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                        <label id="chapterImage" for="file">Chọn ảnh của chương <span class="text-danger">*</span></label>
+                                                        <div id="input-group-multi-images">
+                                                            <input type="file" accept="image/*" name="image" id="chapterImages" onchange="loadFile(this)" multiple>
+                                                            <button type="button" id="btn-reset" class="btn btn-primary">Reset</button>
+                                                            <div style="float: right;">
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="100">100</button>
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="300">300</button>
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="500">500</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ngay">Ngày kết thúc <span class="text-danger">(Không bắt buộc)</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                        <div id="container-ul">
+                                                            <ul id="container-images"></ul>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="thumbnail">Ảnh bìa <span class="text-danger">*</span></label>
-                                                        <input type="file" name="thumbnail" class="form-control" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -293,7 +267,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-12 td-center">
-                                            <button type="submit" class="btn btn-primary submit">Thêm truyện</button>
+                                            <button type="submit" class="btn btn-primary submit">Thêm chương</button>
                                         </div>
                                     </div>
                                 </form>
@@ -327,6 +301,7 @@
         Scripts
     ***********************************-->
     <script src="./js/js-custom.js"></script>
+    <script src="./js/js-multi-images.js"></script>
 
     <script src="./plugins/common/common.min.js"></script>
     <script src="./js/custom.min.js"></script>

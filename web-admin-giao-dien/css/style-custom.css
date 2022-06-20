@@ -133,6 +133,12 @@ form .error, form .errors {
   color: #e75757;
 }
 
+#input-group-multi-images {
+flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
 #container-ul {
   background-color: #464a53;
   margin-top: 10px;

@@ -81,3 +81,4 @@ $('ul#menu li').length
 https://stackoverflow.com/questions/3287336/best-way-to-submit-ul-via-post
 https://stackoverflow.com/questions/3545341/jquery-get-the-id-value-of-li-element-after-click-function
 https://stackoverflow.com/questions/4805933/jquery-remove-direct-child-element
+https://www.w3schools.com/jquery/jquery_ref_selectors.asp

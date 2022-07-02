@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="inc/header">
+    <title>Categories - Thể loại</title>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+<div th:insert="inc/form-layout"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void()">Dashboard</a></li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Tác giả</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title row">
+                                    <div class="col-md-12 mb-4">
+                                        <h3 class="td-center">DANH SÁCH TÁC GIẢ</h3>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
+                                        <a href="./authorAdd.html" style="float:right;">
+                                            <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="DataTable" class="table table-bordered table-hover zero-configuration">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th style="width:10%; min-width:80px;" class="th-center-bold">#</th>
+                                                <th style="width:15%; min-width:80px;" class="th-center-bold">ID</th>
+                                                <th style="width:30%; min-width:150px;" class="th-center-bold">Tên tác giả</th>
+                                                <th style="width:15%; min-width:50px;" class="th-center-bold">Số truyện</th>
+                                                <th style="width:10%; min-width:50px;" class="th-center-bold">Chi tiết</th>
+                                                <th style="width:10%; min-width:50px;" class="th-center-bold">Sửa</th>
+                                                <th style="width:10%; min-width:50px;" class="th-center-bold">Xóa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="td-center">1</td>
+                                                <td class="td-center">1</td>
+                                                <td th:text="${authorname}"></td>
+                                                <td class="td-center">42</td>
+                                                <td class="td-center">
+                                                    <a href="#">
+                                                        <button type="button" class="btn btn-primary"><i class="fa fa-info"></i></button>
+                                                    </a>
+                                                </td>
+                                                <td class="td-center">
+                                                    <form method="post">
+                                                        <input value="authorId" type="hidden" name="id" />
+                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+                                                    </form>
+                                                </td>
+                                                <td class="td-center">
+                                                    <a>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelAuthorId"><i class="fa fa-close"></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="DelAuthorId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel" style="margin: auto;">Are you sure to delete this: </h3>
+                            </div>
+                            <div class="modal-footer" style="margin: auto;">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                <form method="post">
+                                    <button name="id" type="submit" class="btn btn-danger" value="KhachHangId">Yes, delete it !</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #/ container -->
+        </div>
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+<div th:insert="inc/footer"></div>
+</body>
+
+</html>

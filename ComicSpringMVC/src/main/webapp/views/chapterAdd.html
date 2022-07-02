@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head  th:insert="inc/header">
+    <title>Chapter - Thêm Chương</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<div th:insert="inc/form-layout"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="./comics.html">Quản lý Chương</a></li>
+                        <li class="breadcrumb-item active" style="font-weight: bold">Thêm Chương</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12 mb-3">
+                                        <a href="./chapters.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                    </div>
+                                </div>
+                                <form id="chapterAdd" name="chapterAdd" method="get">
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-3"><h3>Thông tin chương</h3></div>
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="chapterAddComicName">Tên truyện</label>
+                                                        <input id="chapterAddComicInput" list="chapterAddComicsRecommence" type="text" class="form-control" placeholder="Nhập tên truyện...">
+                                                        <datalist id="chapterAddComicsRecommence">
+                                                            <option value="Truyen Abc">
+                                                            <option value="Truyen xlqp">
+                                                            <option value="Truyen lllllll">
+                                                            <option value="Truyen rekam">
+                                                            <option value="Truyen mlap">
+                                                        </datalist>
+                                                        <select id="chapterAddComicSelect" class="form-control" name="comicId">
+                                                            <option value="">-- Chọn truyện --</option>
+                                                            <option value="1">Truyen Abc</option>
+                                                            <option value="2">Truyen xlqp</option>
+                                                            <option value="3">Truyen lllllll</option>
+                                                            <option value="4">Truyen rekam</option>
+                                                            <option value="5">Truyen mlap</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="comicName">Chương số <span class="text-danger">*</span></label>
+                                                        <input type="number" name="chapterNum" class="form-control" placeholder="Nhập chương (số)...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="comicName">Tên chương <span class="text-danger">(Không bắt buộc)</span></label>
+                                                        <input type="text" name="chapterName" class="form-control" placeholder="Nhập tên chương...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label id="chapterImage" for="file">Chọn ảnh của chương <span class="text-danger">*</span></label>
+                                                        <div id="input-group-multi-images">
+                                                            <input type="file" accept="image/*" name="image" id="chapterImages" onchange="loadFile(this)" multiple>
+                                                            <button type="button" id="btn-reset" class="btn btn-primary">Reset</button>
+                                                            <div style="float: right;">
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="100">100</button>
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="300">300</button>
+                                                                <button type="button" class="btn btn-primary btn-images-width" value="500">500</button>
+                                                            </div>
+                                                        </div>
+                                                        <div id="container-ul">
+                                                            <ul id="container-images"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-12 td-center">
+                                            <button type="submit" class="btn btn-primary submit">Thêm chương</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+<div th:insert="inc/footer"></div>
+</body>
+
+</html>

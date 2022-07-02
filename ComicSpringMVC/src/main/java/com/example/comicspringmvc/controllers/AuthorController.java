@@ -20,6 +20,7 @@ public class AuthorController {
     @RequestMapping(method = RequestMethod.GET, value = {"/author"})
     public String authorList (Model model) {
         model.addAttribute("authorname","author1");
+        model.addAttribute("authorPage", "true");
         return "authors";
     }
 

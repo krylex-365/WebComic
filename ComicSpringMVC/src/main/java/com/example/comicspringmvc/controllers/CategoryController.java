@@ -14,6 +14,7 @@ public class CategoryController {
     public String categoryList (Model model) {
         model.addAttribute("authorname","author1");
         model.addAttribute("alert",false);
+        model.addAttribute("categoryPage", "true");
         return "categories";
     }
 

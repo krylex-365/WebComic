@@ -34,6 +34,10 @@
                                     <div class="col-md-12 mb-4">
                                         <h3 class="td-center">DANH SÁCH THỂ LOẠI</h3>
                                     </div>
+                                    <div class="alert alert-primary" role="alert" th:text="${success}"
+                                         th:if="${success}"></div>
+                                    <div class="alert alert-danger" role="alert" th:text="${error}"
+                                         th:if="${error}"></div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
                                         <a href="./categoryAdd.html" style="float:right;">

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <title>Dashboard</title>-->
+<!--    <meta charset="utf-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/res/images/favicon.png}">
+
+    <link rel="stylesheet" th:href="@{/res/plugins/jqueryui/css/jquery-ui-1-12-1.css}">
+    <!-- Pignose Calender -->
+    <link rel="stylesheet" th:href="@{/res/plugins/pg-calendar/css/pignose.calendar.min.css}" >
+    <!-- Chartist -->
+    <link rel="stylesheet" th:href="@{/res/plugins/chartist/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/res/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" th:href="@{/res/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css}">
+    <link rel="stylesheet" th:href="@{/res/plugins/tables/css/datatable/dataTables.bootstrap4.min.css}">
+    <!-- Page plugins css -->
+    <link rel="stylesheet" th:href="@{/res/plugins/clockpicker/dist/jquery-clockpicker.min.css}">
+    <!-- Color picker plugins css -->
+    <link rel="stylesheet" th:href="@{/res/plugins/jquery-asColorPicker-master/css/asColorPicker.css}">
+    <!-- Date picker plugins css -->
+    <link rel="stylesheet" th:href="@{/res/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css}" >
+    <link rel="stylesheet" th:href="@{/res/css/style.css}">
+    <link rel="stylesheet" th:href="@{/res/css/style-custom.css}">
+    <style>
+        .box {
+            padding: 0;
+        }
+
+        .box select {
+            background-color: #7571f9;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            font-size: 0.875rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            -webkit-appearance: button;
+            appearance: button;
+            outline: none;
+        }
+
+        .box:hover::before {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .box select option {
+            padding: 30px;
+        }
+
+        input[type="checkbox"]:after {
+            border: 1px solid #7571f9 !important;
+            margin: auto !important;
+        }
+
+        #DataTable_filter .form-control {
+            border: 1px solid #7571f9;
+            border-radius: 0.5rem;
+        }
+
+        #DataTable_length .form-control {
+            border: 1px solid #7571f9;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

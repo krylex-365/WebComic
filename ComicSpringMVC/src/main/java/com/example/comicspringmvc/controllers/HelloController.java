@@ -32,9 +32,9 @@ public class HelloController {
 //        }
 
         System.out.println("test ok");
-        model.addAttribute("abc", "test123");
-        model.addAttribute("url", "image.jpg");
-        return "test";
+//        model.addAttribute("abc", "test123");
+//        model.addAttribute("url", "image.jpg");
+        return "index";
     }
 
     @RequestMapping("/resource")

@@ -1,0 +1,192 @@
+﻿@charset "UTF-8";
+.wizard .content {
+    min-height: 50rem !important;
+    margin: 0;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+.inputfile + label {
+  text-transform: uppercase; }
+
+.inputfile + label {
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center; }
+
+.inputfile + label figure {
+  width: 154px;
+  height: 154px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 6px; }
+
+.inputfile + label figure img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%; }
+
+.form-file {
+margin: auto;
+}
+
+.th-center-bold {
+text-align: center;
+font-weight: bold;
+}
+
+.td-center {
+text-align: center;
+}
+
+.container-fluid>.row>.col-md-12>.card {
+box-shadow: 0px 12px 30px -5px #a9a9a9 !important;
+}
+
+.box {
+            padding: 0;
+        }
+
+            .box select {
+                background-color: #181e24;
+                color: white;
+                padding: 12px;
+                width: 100%;
+                font-size: 0.875rem;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+                -webkit-appearance: button;
+                appearance: button;
+                outline: none;
+            }
+
+            .box:hover::before {
+                color: rgba(255, 255, 255, 0.6);
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .box select option {
+                padding: 30px;
+            }
+
+        input[type="checkbox"]:after {
+            border: 1px solid #181e24 !important;
+            margin: auto !important;
+        }
+
+        #DataTable_filter .form-control {
+            border: 1px solid #181e24;
+            border-radius: 0.5rem;
+        }
+
+        #DataTable_length .form-control {
+            border: 1px solid #181e24;
+            border-radius: 0.5rem;
+        }
+        .nk-sidebar a {
+            background-color: #181e24 !important;
+            color: #f8f9fa !important;
+        }
+            .nk-sidebar a:hover {
+                background-color: #f8f9fa !important;
+                color: #181e24 !important;
+            }
+        .nk-sidebar {
+            background-color: #181e24 !important;
+            color: #f8f9fa !important;
+        }
+        .nav-header {
+            background-color: #181e24 !important;
+        }
+        .nk-sidebar .metismenu > li a > i {
+            color: #f8f9fa !important;
+        }
+
+ul#authorsList li, ul#categoriesList li, ul#comicsList li, ul#container-images li {
+  display:inline;
+}
+#authorsList li, #categoriesList li, #comicsList li {
+  margin: 0px 5px;
+  padding: 5px 10px;
+  background-color: #49ef5a;
+  border: 1px solid #181E24;
+  border-radius: 20px;
+}
+#authorsList li:hover, #categoriesList li:hover, #comicsList li:hover {
+  background-color: #e75757;
+  color: #f8f9fa;
+}
+form .error, form .errors {
+  color: #e75757;
+}
+
+#input-group-multi-images {
+flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+#container-ul {
+  background-color: #464a53;
+  margin-top: 10px;
+}
+#container-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul#container-images li {
+  position: relative;
+  padding: 5px;
+  margin: auto;
+}
+.container-image:hover~.del-img-block {
+  display: block;
+}
+
+.container-image {
+  
+}        
+
+.text-block {
+  position: absolute;
+    top: 1%;
+    left: 1%;
+    background-color: #f8f9fa !important;
+    color: #181e24 !important;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #ff5e5e;
+}
+.del-img-block {
+  display: none;
+  position: absolute;
+    top: 1%;
+    right: 1%;
+    background-color: #f8f9fa;
+    color: #181e24;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #ff5e5e;
+}
+.del-img-block:hover {
+  display: block;
+  background-color: #ff5e5e;
+  color: #f8f9fa;
+}
+#chapterImages {
+  border: 1px solid #181E24;
+  border-radius: 0.25rem;
+}

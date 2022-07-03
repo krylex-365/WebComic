@@ -35,9 +35,21 @@
                                     <div class="col-md-12 mb-4">
                                         <h3 class="td-center">DANH SÁCH TÁC GIẢ</h3>
                                     </div>
+                                    <div th:if="${success}" class="col-md-12 alert alert-success alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${success}"></strong>
+                                    </div>
+                                    <div th:if="${fail}" class="col-md-12 alert alert-danger alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${fail}"></strong>
+                                    </div>
+                                    <div th:if="${nochange}" class="col-md-12 alert alert-warning alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${nochange}"></strong>
+                                    </div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
-                                        <a href="./authorAdd.html" style="float:right;">
+                                        <a th:href="@{/author/add}" style="float:right;">
                                             <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
                                         </a>
                                     </div>
@@ -55,11 +67,11 @@
                                                 <th style="width:10%; min-width:50px;" class="th-center-bold">Xóa</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody th:each="author: ${authorsList}" th:remove="tag">
                                             <tr>
-                                                <td class="td-center">1</td>
-                                                <td class="td-center">1</td>
-                                                <td th:text="${authorname}"></td>
+                                                <td class="td-center" th:text="${authorsList.indexOf(author)+1}"></td>
+                                                <td class="td-center" th:text="${author.authorId}"></td>
+                                                <td th:text="${author.authorName}"></td>
                                                 <td class="td-center">42</td>
                                                 <td class="td-center">
                                                     <a href="#">
@@ -67,17 +79,36 @@
                                                     </a>
                                                 </td>
                                                 <td class="td-center">
-                                                    <form method="post">
-                                                        <input value="authorId" type="hidden" name="id" />
+                                                    <form method="get" th:action="@{/author/edit}">
+                                                        <input th:value="${author.authorId}" type="hidden" name="authorId" />
                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
                                                     </form>
                                                 </td>
                                                 <td class="td-center">
                                                     <a>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelAuthorId"><i class="fa fa-close"></i></button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'#authorId'+${author.authorId}"><i class="fa fa-close"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>
+                                            <!--Confirm delete modal-->
+                                            <div class="modal fade" th:id="'authorId'+${author.authorId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" id="exampleModalLabel" style="margin: auto; text-align: center;">
+                                                                Bạn chắc chắn muốn xóa <br th:text="'tác giả ' + ${author.authorName} + '?'">
+                                                            </h3>
+                                                        </div>
+                                                        <div class="modal-footer" style="margin: auto;">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                                            <form method="post" th:action="@{author/delete}">
+                                                                <button name="authorId" type="submit" class="btn btn-danger" th:value="${author.authorId}">Yes, delete it !</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -85,21 +116,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="DelAuthorId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel" style="margin: auto;">Are you sure to delete this: </h3>
-                            </div>
-                            <div class="modal-footer" style="margin: auto;">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                                <form method="post">
-                                    <button name="id" type="submit" class="btn btn-danger" value="KhachHangId">Yes, delete it !</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             <!-- #/ container -->

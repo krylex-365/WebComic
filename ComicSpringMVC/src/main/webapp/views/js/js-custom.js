@@ -177,11 +177,35 @@ $("form[name='comicAdd']").validate({
     submitHandler: function (form) {
         if ($('.errors').length > 0) {
             console.log($('.errors').length);
-            isValid = 0;
+            //isValid = 0;
         } else {
             form.submit();
         }
     }
 });
+$("form[name='authorForm']").validate({
+    // Specify validation rules
+    rules: {
+        authorName: {
+            validateAuthorName: true
+        }
+    },
+    messages: {
+        authorName: {
+            required: "Tên tác giả không được bỏ trống",
+        },
+    },
+    submitHandler: function (form) {
+        if ($('.errors').length > 0) {
+            console.log($('.errors').length);
+            //isValid = 0;
+        } else {
+            form.submit();
+        }
+    }
+});
+$.validator.addMethod("validateAuthorName", function (value, element) {
+    return this.optional(element) || !(/[`~!@#$%^&*()_+=\[\]{};:"\\|,<>\/?]+/.test(value));
+}, "Tên tác giả chỉ được phép có ký tự đặc biệt ', - và .");
 
 

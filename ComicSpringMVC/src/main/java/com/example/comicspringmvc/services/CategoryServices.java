@@ -29,12 +29,21 @@ public class CategoryServices {
         }
         return false;
     }
+//
+//    public boolean isIdStatusActive(Long id){
+//        if(categoryRepository.findById(id).get().getStatus()==1){
+//            return true;
+//        }
+//        return false;
+//    }
+
+
     public List<CategoryEntity> GetAll() {
         return categoryRepository.GetAllCustom();
     }
 
     public List<CategoryEntity> FindAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.GetAllCustom();
     }
 
     public Optional<CategoryEntity> FindById(Long id) {
@@ -46,7 +55,17 @@ public class CategoryServices {
     public CategoryEntity Update(CategoryEntity categoryComic) {
         return categoryRepository.save(categoryComic);}
 
-    public boolean Delete(Long id) {
+    public boolean Delete(CategoryEntity category){
+        category.setStatus(0);
+
+        Update(category);
+        System.out.println("Updated____________________");
+        if(Update(category).getStatus()==1)return false;
+        return true;
+
+    }
+
+    public boolean DeleteCompletely(Long id) {
         categoryRepository.deleteById(id);
         if(checkIdIsPresent(id))return false;
         return true;

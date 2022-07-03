@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
-    @Query("select new com.example.comicspringmvc.models.CategoryEntity(c,count(cc.cateComicId)) from CategoryEntity c left join CateComicEntity cc on c=cc.category group by c")
+    @Query("select new com.example.comicspringmvc.models.CategoryEntity(c,count(cc.cateComicId)) from CategoryEntity c left join CateComicEntity cc on c=cc.category where c.status=1 group by c")
     public List<CategoryEntity> GetAllCustom();
+
 }

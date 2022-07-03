@@ -51,12 +51,10 @@ public class CategoryController {
     public String delete(Model model,RedirectAttributes redirectAttributes, @RequestParam("id") long id) {
         Optional<CategoryEntity> cate = categoryServices.FindById(id);
         if(cate.isPresent()){
-            CategoryEntity temp = cate.get();
-            categoryServices.Delete(id);
-            if(categoryServices.FindById(id).isPresent()){
-                redirectAttributes.addFlashAttribute("error","Delete Failed");
-            }else{
+            if(categoryServices.Delete(cate.get())){
                 redirectAttributes.addFlashAttribute("success","Delete Success");
+            }else{
+                redirectAttributes.addFlashAttribute("error","Delete Failed");
             }
             return "redirect:/category";
         }
@@ -69,8 +67,7 @@ public class CategoryController {
         System.out.println(id);
         Optional<CategoryEntity> cate = categoryServices.FindById(id);
         if(cate.isPresent()){
-            CategoryEntity category = cate.get();
-            model.addAttribute("category",category);
+            model.addAttribute("category",cate.get());
             return "categoryEdit";
         }
         return "categoryEdit";

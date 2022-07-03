@@ -22,7 +22,11 @@ public class CategoryController {
 
     @RequestMapping(method = RequestMethod.GET, value = {"/category"})
     public String categoryList (Model model) {
-        List<CategoryEntity> categories = categoryServices.FindAll();
+//        List<CategoryEntity> categories = categoryServices.FindAll();
+        List<CategoryEntity> categories = categoryServices.GetAll();
+//        for(CategoryEntity e : temp){
+//            System.out.println("id:"+e.getCategoryId()+"  "+"comicnumber:"+ e.getComicNumber());
+//        }
         model.addAttribute("categories",categories);
         return "categories";
     }

@@ -12,6 +12,14 @@ public class CategoryEntity {
         this.descriptions = descriptions;
     }
 
+    public CategoryEntity(CategoryEntity category, Long comicNumber) {
+        this.categoryId = category.categoryId;
+        this.categoryName = category.categoryName;
+        this.descriptions = category.descriptions;
+        this.status = category.status;
+        this.comicNumber = comicNumber;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CategoryId")
@@ -27,7 +35,7 @@ public class CategoryEntity {
     private Integer status = 1;
 
     @Transient
-    private int comicNumber;
+    private Long comicNumber;
 
     public CategoryEntity() {
 
@@ -70,5 +78,11 @@ public class CategoryEntity {
         return "CategoryEntity{}";
     }
 
+    public Long getComicNumber() {
+        return comicNumber;
+    }
 
+    public void setComicNumber(Long comicNumber) {
+        this.comicNumber = comicNumber;
+    }
 }

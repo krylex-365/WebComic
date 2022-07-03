@@ -29,6 +29,9 @@ public class CategoryServices {
         }
         return false;
     }
+    public List<CategoryEntity> GetAll() {
+        return categoryRepository.GetAllCustom();
+    }
 
     public List<CategoryEntity> FindAll() {
         return categoryRepository.findAll();

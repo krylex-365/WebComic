@@ -33,10 +33,10 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
-                                        <a href="./categories.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                        <a th:href="@{/category}" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
                                     </div>
                                 </div>
-                                <form method="post">
+                                <form method="post" th:action="@{/category/edit}">
                                     <div class="row">
                                         <div class="col-lg-12 mb-3"><h3>Thông tin thể loại</h3></div>
                                         <div class="col-lg-12">
@@ -44,13 +44,19 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="categoryId">Mã thể loại <span class="text-danger">*</span></label>
-                                                        <input type="text" value="1" class="form-control" name="categoryId" readonly="readonly">
+                                                        <input id="categoryId" type="text" th:value="${category.CategoryId}" class="form-control" name="categoryId" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="name">Tên thể loại <span class="text-danger">*</span></label>
-                                                        <input type="text" value="Action" name="categoryName" class="form-control" placeholder="Nhập tên thể loại..." required>
+                                                        <label for="categoryName">Tên thể loại <span class="text-danger">*</span></label>
+                                                        <input id="categoryName" type="text" th:value="${category.CategoryName}" name="categoryName" class="form-control" placeholder="Nhập tên thể loại..." required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="desscription">Mô tả thể loại <span class="text-danger">*</span></label>
+                                                        <input id="desscription" type="text" th:value="${category.Descriptions}" name="desscription" class="form-control" placeholder="Nhập mô tả thể loại..." required>
                                                     </div>
                                                 </div>
                                             </div>

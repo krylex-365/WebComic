@@ -18,7 +18,7 @@
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void()">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
                         <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Thể loại</li>
                     </ol>
                 </div>
@@ -40,7 +40,7 @@
                                          th:if="${error}"></div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
-                                        <a href="./categoryAdd.html" style="float:right;">
+                                        <a th:href="@{/category/add}" style="float:right;">
                                             <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
                                         </a>
                                     </div>
@@ -59,19 +59,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="td-center">1</td>
-                                                <td class="td-center">1</td>
-                                                <td>Action</td>
-                                                <td class="td-center">42</td>
+                                            <tr th:each="cate,cateStat : ${categories}">
+                                                <td class="td-center" th:text="${cateStat.index}" ></td>
+                                                <td class="td-center" th:text="${cate.CategoryId}">1</td>
+                                                <td th:text="${cate.CategoryName}" >Action</td>
+                                                <td class="td-center" th:text="${cate.CategoryId}">42</td>
                                                 <td class="td-center">
-                                                    <a href="#">
+                                                    <a th:href="@{/category/detail}">
                                                         <button type="button" class="btn btn-primary"><i class="fa fa-info"></i></button>
                                                     </a>
                                                 </td>
                                                 <td class="td-center">
-                                                    <form method="post">
-                                                        <input value="categoryId" type="hidden" name="id" />
+                                                    <form method="GET" th:action="@{/category/edit}">
+                                                        <input th:value="${cate.CategoryId}" type="hidden" name="id" />
                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
                                                     </form>
                                                 </td>
@@ -80,6 +80,21 @@
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DelCategoryId"><i class="fa fa-close"></i></button>
                                                     </a>
                                                 </td>
+                                                <div class="modal fade" id="DelCategoryId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 class="modal-title" id="exampleModalLabel" style="margin: auto;">Are you sure to delete this: </h3>
+                                                            </div>
+                                                            <div class="modal-footer" style="margin: auto;">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                                                <form method="post" th:action="@{/category/delete}">
+                                                                    <button name="id" type="submit" class="btn btn-danger" th:value="${cate.CategoryId}">Yes, delete it !</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -88,21 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="DelCategoryId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel" style="margin: auto;">Are you sure to delete this: </h3>
-                            </div>
-                            <div class="modal-footer" style="margin: auto;">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                                <form method="post">
-                                    <button name="id" type="submit" class="btn btn-danger" value="KhachHangId">Yes, delete it !</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             <!-- #/ container -->

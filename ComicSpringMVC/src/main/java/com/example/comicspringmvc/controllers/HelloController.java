@@ -23,7 +23,7 @@ public class HelloController {
     @Autowired
     AccountRepository accountRepository;
 
-    @RequestMapping(method = RequestMethod.GET, value = {"/", "/index"})
+    @RequestMapping(method = RequestMethod.GET, value = {"/", "/dashboard"})
     public String test(Model model) {
 //        if (accountRepository.findAll().isEmpty()) {
 //            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

@@ -6,6 +6,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Category")
 public class CategoryEntity {
+
+    public CategoryEntity(String categoryName, String descriptions) {
+        this.categoryName = categoryName;
+        this.descriptions = descriptions;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CategoryId")
@@ -18,7 +24,14 @@ public class CategoryEntity {
     private String descriptions;
 
     @Column(name = "Status")
-    private Integer status;
+    private Integer status = 1;
+
+    @Transient
+    private int comicNumber;
+
+    public CategoryEntity() {
+
+    }
 
     public Integer getStatus() {
         return status;
@@ -36,11 +49,11 @@ public class CategoryEntity {
         this.descriptions = descriptions;
     }
 
-    public String getCateName() {
+    public String getCategoryName() {
         return categoryName;
     }
 
-    public void setCateName(String name) {
+    public void setCategoryName(String name) {
         this.categoryName = name;
     }
 
@@ -56,4 +69,6 @@ public class CategoryEntity {
     public String toString() {
         return "CategoryEntity{}";
     }
+
+
 }

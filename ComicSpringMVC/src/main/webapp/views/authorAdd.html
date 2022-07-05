@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="inc/header">
-    <title>Categories - Thêm Thể loại</title>
-    <meta charset="utf-8">
 </head>
 
 <body>
@@ -24,7 +22,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="./authors.html">Quản lý Tác giả</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/author}">Quản lý Tác giả</a></li>
                         <li class="breadcrumb-item active" style="font-weight: bold">Thêm Tác giả</li>
                     </ol>
                 </div>

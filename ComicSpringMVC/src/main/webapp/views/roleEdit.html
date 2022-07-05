@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="inc/header">
+</head>
+
+<body>
+
+    <div th:insert="inc/form-layout"></div>
+    <!--**********************************
+        Content body start
+    ***********************************-->
+
+    <div class="content-body">
+
+        <div class="row page-titles mx-0">
+            <div class="col p-md-0">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/role}">Quản lý quyền</a></li>
+                    <li class="breadcrumb-item active" style="font-weight: bold">Sửa quyền</li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12 mb-3">
+                                    <a th:href="@{/role}" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                </div>
+                            </div>
+                            <form name="roleForm" method="post">
+                                <div class="row">
+                                    <div class="col-lg-12 mb-3"><h3>Thông tin quyền</h3></div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="roleId">Mã quyền <span class="text-danger">*</span></label>
+                                                    <input type="text" th:value="${role.roleId}" class="form-control" name="roleId" readonly="readonly">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Tên quyền <span class="text-danger">*</span></label>
+                                                    <input type="text" th:value="${role.roleName}" name="roleName" class="form-control" placeholder="Nhập tên quyền..." required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12 td-center">
+                                        <button type="submit" class="btn btn-primary">Sửa quyền</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #/ container -->
+    </div>
+
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <div th:insert="inc/footer"></div>
+</body>
+
+</html>

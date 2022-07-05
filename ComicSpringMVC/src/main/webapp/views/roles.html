@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="inc/header">
+
+</head>
+
+<body>
+
+    <div th:insert="inc/form-layout"></div>
+    <!--**********************************
+        Content body start
+    ***********************************-->
+
+    <div class="content-body">
+
+        <div class="row page-titles mx-0">
+            <div class="col p-md-0">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void()">Dashboard</a></li>
+                    <li class="breadcrumb-item active" style="font-weight: bold">Quản lý Quyền</li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title row">
+                                <div class="col-md-12 mb-4">
+                                    <h3 class="td-center">DANH SÁCH QUYỀN</h3>
+                                </div>
+                                <div th:if="${success}" class="col-md-12 alert alert-success alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <strong th:text="${success}"></strong>
+                                </div>
+                                <div th:if="${fail}" class="col-md-12 alert alert-danger alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <strong th:text="${fail}"></strong>
+                                </div>
+                                <div th:if="${nochange}" class="col-md-12 alert alert-warning alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <strong th:text="${nochange}"></strong>
+                                </div>
+                                <div class="col-md-12">
+                                    <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
+                                    <a th:href="@{/role/add}" style="float:right;">
+                                        <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="DataTable" class="table table-bordered table-hover zero-configuration">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th style="width:15%; min-width:80px;" class="th-center-bold">#</th>
+                                            <th style="width:20%; min-width:80px;" class="th-center-bold">ID</th>
+                                            <th style="width:35%; min-width:150px;" class="th-center-bold">Tên quyền</th>
+                                            <th style="width:10%; min-width:50px;" class="th-center-bold">Chi tiết</th>
+                                            <th style="width:10%; min-width:50px;" class="th-center-bold">Sửa</th>
+                                            <th style="width:10%; min-width:50px;" class="th-center-bold">Xóa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody th:each="role: ${rolesList}" th:remove="tag">
+                                        <tr>
+                                            <td class="td-center" th:text="${rolesList.indexOf(role)+1}"></td>
+                                            <td class="td-center" th:text="${role.roleId}"></td>
+                                            <td th:text="${role.roleName}"></td>
+                                            <td class="td-center">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-info"></i></button>
+                                                </a>
+                                            </td>
+                                            <td class="td-center">
+                                                <form method="get" th:action="@{/role/edit}">
+                                                    <input th:value="${role.roleId}" type="hidden" name="roleId" />
+                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+                                                </form>
+                                            </td>
+                                            <td class="td-center">
+                                                <a>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'#roleId'+${role.roleId}"><i class="fa fa-close"></i></button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!--Confirm delete modal-->
+                                        <div class="modal fade" th:id="'roleId'+${role.roleId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title" id="exampleModalLabel" style="margin: auto; text-align: center;">
+                                                            Bạn chắc chắn muốn xóa <br th:text="'tác giả ' + ${role.roleName} + '?'">
+                                                        </h3>
+                                                    </div>
+                                                    <div class="modal-footer" style="margin: auto;">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                                        <form method="post" th:action="@{role/delete}">
+                                                            <button name="roleId" type="submit" class="btn btn-danger" th:value="${role.roleId}">Yes, delete it !</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- #/ container -->
+    </div>
+
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <div th:insert="inc/footer"></div>
+</body>
+
+</html>

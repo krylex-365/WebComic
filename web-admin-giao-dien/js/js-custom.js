@@ -41,7 +41,74 @@ $(document).keypress(
         }
     });
 $(document).on('change', 'input', function () {
-    if ($(this).is("#authorInput")) {
+    console.log($(this).attr('id'));
+    switch ($(this).attr('id')) {
+        case "authorInput": {
+            $('#authorName').html('Tác giả <span class="text-danger">*</span>');
+            var val = $(this).val();
+            var listItems = $("#authorsList").find("li");
+            if (listItems.length > 0) {
+                for (j = 0; j < listItems.length; j++) {
+                    if ($(listItems[j]).text() === val) {
+                        $("#authorInput").val("");
+                        return;
+                    }
+                }
+            }
+            $("#authorsList").append('<li class="remove-Author">' + val + '<input type="hidden" name="authors[]" value="' + val + '"/></li>');
+            //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+            $("#authorInput").val("");
+            break;
+        }
+        case "categoryInput": {
+            $('#categoryName').html('Thể loại <span class="text-danger">*</span>');
+            var val = $(this).val();
+            var listItems = $("#categoriesList").find("li");
+            if (listItems.length > 0) {
+                for (j = 0; j < listItems.length; j++) {
+                    if ($(listItems[j]).text() === val) {
+                        $("#categoryInput").val("");
+                        return;
+                    }
+                }
+            }
+            $("#categoriesList").append('<li class="remove-Category">' + val + '<input type="hidden" name="categories[]" value="' + val + '"/></li>');
+            //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+            $("#categoryInput").val("");
+            break;
+        }
+        case "comicInput": {
+            var val = $(this).val();
+            var listItems = $("#comicsList").find("li");
+            if (listItems.length > 0) {
+                for (j = 0; j < listItems.length; j++) {
+                    if ($(listItems[j]).text() === val) {
+                        $("#comicInput").val("");
+                        return;
+                    }
+                }
+            }
+            $("#comicsList").append('<li class="remove-Comic">' + val + '<input type="hidden" name="comics[]" value="' + val + '"/></li>');
+            //<li>Banana<input type='hidden' name='fruits[]' value='Banana' /></li>
+            $("#comicInput").val("");
+            break;
+        }
+        case "chapterAddComicInput": {
+            var val = $(this).val();
+            var options = $('#chapterAddComicSelect')[0].options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].text == val) {
+                    console.log(options[i].text);
+                    console.log(options[i].value);
+                    $("#chapterAddComicSelect").val(options[i].value);
+                    $("#chapterAddComicInput").val("");
+                    return;
+                }
+            }
+            break;
+        }
+    }
+    /*if ($(this).is("#authorInput")) {
         //console.log($(this));
         $('#authorName').html('Tác giả <span class="text-danger">*</span>');
         var val = $(this).val();
@@ -100,7 +167,7 @@ $(document).on('change', 'input', function () {
                 break;
             }
         }
-    }
+    }*/
     /*var options = $('#authorsRecommence')[0].options;
 
     for (var i = 0; i < options.length; i++) {

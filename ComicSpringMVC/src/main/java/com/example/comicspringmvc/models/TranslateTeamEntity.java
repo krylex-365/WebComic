@@ -11,7 +11,7 @@ public class TranslateTeamEntity {
     @Column(name = "TranslateTeamId")
     private Long translateTeamId;
 
-    @Column(name = "TranslateTeamName", nullable = false)
+    @Column(name = "TranslateTeamName", columnDefinition = "nvarchar(100)", nullable = false)
     private String translateTeamName;
 
     @Column(name = "CreatedDate", nullable = false)
@@ -19,6 +19,12 @@ public class TranslateTeamEntity {
 
     @Column(name = "ModifiedDate")
     private LocalDate modifiedDate;
+
+    @Column(name = "CreatedBy")
+    private Long createdBy;
+
+    @Column(name = "ModifiedBy")
+    private Long modifiedBy;
 
     @Column(name = "Status", columnDefinition = "integer default 1")
     private Integer status = 1;
@@ -66,6 +72,22 @@ public class TranslateTeamEntity {
         this.modifiedDate = modifiedDate;
     }
 
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(Long modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
     @Override
     public String toString() {
         return "TranslateTeamEntity{" +
@@ -73,6 +95,8 @@ public class TranslateTeamEntity {
                 ", translateTeamName='" + translateTeamName + '\'' +
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
+                ", createdBy='" + createdBy + '\'' +
+                ", modifiedBy='" + modifiedBy + '\'' +
                 ", status=" + status +
                 '}';
     }

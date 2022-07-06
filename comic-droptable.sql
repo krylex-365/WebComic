@@ -33,3 +33,20 @@ drop table Role
 drop table TranslateTeam
 drop table Request
 drop table Report
+
+drop table notification
+drop table comment
+drop table follow
+drop table cate_comic
+drop table author_comic
+drop table chapter_image
+drop table chapter
+drop table author
+drop table category
+drop table comic
+drop table account_role_entities
+drop table account
+drop table role
+drop table translate_team
+drop table request
+drop table report

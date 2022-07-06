@@ -11,14 +11,14 @@ public class ComicEntity {
     @Column(name = "ComicId")
     private Long comicId;
 
-    @Column(name = "ComicName", nullable = false)
+    @Column(name = "ComicName", columnDefinition = "nvarchar", nullable = false)
     private String comicName;
 
     @Column(name = "ComicThumbnail", nullable = false)
     private String comicThumbnail;
 
-    @Column(name = "Descriptions", columnDefinition = "text", nullable = false)
-    private String descriptions;
+    @Column(name = "Description", columnDefinition = "text", nullable = false)
+    private String description;
 
     @Column(name = "DateFrom")
     private LocalDate dateFrom;
@@ -38,22 +38,27 @@ public class ComicEntity {
     @Column(name = "Follows", columnDefinition = "integer default 0")
     private Integer follows;
 
-    @Column(name = "Status", columnDefinition = "integer default 1")
-    private Integer status = 1;
-
     @Column(name = "CreatedDate", nullable = false)
     private LocalDate createdDate;
 
     @Column(name = "ModifiedDate")
     private LocalDate modifiedDate;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "CreatedBy", nullable = false, foreignKey = @ForeignKey(name = "FK_Comic_AccountCreated"))
-    private AccountEntity createdBy;
+    @Column(name = "CreatedBy")
+    private Long createdBy;
+
+    @Column(name = "ModifiedBy")
+    private Long modifiedBy;
+
+    @Column(name = "Status", columnDefinition = "integer default 1")
+    private Integer status = 1;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ModifiedBy",foreignKey = @ForeignKey(name = "FK_Comic_AccountModified"))
-    private AccountEntity modifiedBy;
+    @JoinColumn(name = "TranslatedBy", nullable = false, foreignKey = @ForeignKey(name = "FK_Comic_TranslateTeam"))
+    private TranslateTeamEntity translatedBy;
+
+    @Transient
+    private Long countChapters;
 
     public ComicEntity() {
     }
@@ -74,12 +79,12 @@ public class ComicEntity {
         this.comicName = comicName;
     }
 
-    public String getDescriptions() {
-        return descriptions;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptions(String descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getDateFrom() {
@@ -146,19 +151,19 @@ public class ComicEntity {
         this.modifiedDate = modifiedDate;
     }
 
-    public AccountEntity getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(AccountEntity createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
-    public AccountEntity getModifiedBy() {
+    public Long getModifiedBy() {
         return modifiedBy;
     }
 
-    public void setModifiedBy(AccountEntity modifiedBy) {
+    public void setModifiedBy(Long modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 
@@ -178,13 +183,37 @@ public class ComicEntity {
         this.comicThumbnail = comicThumbnail;
     }
 
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public TranslateTeamEntity getTranslatedBy() {
+        return translatedBy;
+    }
+
+    public void setTranslatedBy(TranslateTeamEntity translatedBy) {
+        this.translatedBy = translatedBy;
+    }
+
+    public Long getCountChapters() {
+        return countChapters;
+    }
+
+    public void setCountChapters(Long countChapters) {
+        this.countChapters = countChapters;
+    }
+
     @Override
     public String toString() {
         return "ComicEntity{" +
                 "comicId=" + comicId +
                 ", comicName='" + comicName + '\'' +
                 ", comicThumbnail='" + comicThumbnail + '\'' +
-                ", descriptions='" + descriptions + '\'' +
+                ", description='" + description + '\'' +
                 ", dateFrom=" + dateFrom +
                 ", dateTo=" + dateTo +
                 ", likes=" + likes +
@@ -196,6 +225,7 @@ public class ComicEntity {
                 ", modifiedBy=" + modifiedBy +
                 ", modifiedDate=" + modifiedDate +
                 ", status=" + status +
+                ", countChapters=" + countChapters +
                 '}';
     }
 }

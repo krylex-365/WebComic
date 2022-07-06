@@ -19,9 +19,6 @@ public class AccountEntity {
     @Column(name = "Password", nullable = false)
     private String password;
 
-    @Column(name = "CreatedDate", nullable = false)
-    private LocalDate createdDate;
-
     @Column(name = "FullName", nullable = false)
     private String fullName;
 
@@ -31,10 +28,19 @@ public class AccountEntity {
     @Column(name = "Sex")
     private Integer sex;
 
-//    @Column(name = "Role", columnDefinition = "integer default 0", nullable = false)
-//    private Integer role = 0;
+    @Column(name = "CreatedDate", nullable = false)
+    private LocalDate createdDate;
 
-    @Column(name = "Status", columnDefinition = "integer default 1", nullable = false)
+    @Column(name = "ModifiedDate")
+    private LocalDate modifiedDate;
+
+    @Column(name = "CreatedBy")
+    private Long createdBy;
+
+    @Column(name = "ModifiedBy")
+    private Long modifiedBy;
+
+    @Column(name = "Status", columnDefinition = "integer default 1")
     private Integer status = 1;
 
     @ManyToOne(optional = true)
@@ -59,16 +65,37 @@ public class AccountEntity {
     public AccountEntity() {
     }
 
+    public AccountEntity(Long accountId) {
+        this.accountId = accountId;
+    }
 
-    public AccountEntity(Long accountId, String email, String password, LocalDate createdDate, String fullName, LocalDate birthDay, Integer sex, Integer status, TranslateTeamEntity translateTeam, Set<RoleEntity> roles) {
+    public AccountEntity(AccountEntity temp) {
+        this.accountId = temp.accountId;
+        this.email = temp.email;
+        this.password = temp.password;
+        this.fullName = temp.fullName;
+        this.birthDay = temp.birthDay;
+        this.sex = temp.sex;
+        this.createdDate = temp.createdDate;
+        this.modifiedDate = temp.modifiedDate;
+        this.createdBy = temp.createdBy;
+        this.modifiedBy = temp.modifiedBy;
+        this.status = temp.status;
+        this.translateTeam = temp.translateTeam;
+        this.roles = temp.roles;
+    }
+
+    public AccountEntity(Long accountId, String email, String password, String fullName, LocalDate birthDay, Integer sex, LocalDate createdDate, LocalDate modifiedDate, Long createdBy, Long modifiedBy, Integer status, TranslateTeamEntity translateTeam, Set<RoleEntity> roles) {
         this.accountId = accountId;
         this.email = email;
         this.password = password;
-        this.createdDate = createdDate;
         this.fullName = fullName;
         this.birthDay = birthDay;
         this.sex = sex;
-//        this.role = role;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.createdBy = createdBy;
+        this.modifiedBy = modifiedBy;
         this.status = status;
         this.translateTeam = translateTeam;
         this.roles = roles;
@@ -154,19 +181,46 @@ public class AccountEntity {
         this.translateTeam = translateTeam;
     }
 
+    public LocalDate getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDate modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(Long modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
     @Override
     public String toString() {
         return "AccountEntity{" +
                 "accountId=" + accountId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", createdDate=" + createdDate +
                 ", fullName='" + fullName + '\'' +
                 ", birthDay=" + birthDay +
                 ", sex=" + sex +
-//                ", role=" + role +
+                ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
+                ", createdBy='" + createdBy + '\'' +
+                ", modifiedBy='" + modifiedBy + '\'' +
                 ", status=" + status +
                 ", translateTeam=" + translateTeam +
+                ", roles=" + roles +
                 '}';
     }
 }

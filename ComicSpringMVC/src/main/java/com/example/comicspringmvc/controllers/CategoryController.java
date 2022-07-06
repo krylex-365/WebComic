@@ -28,6 +28,7 @@ public class CategoryController {
 //            System.out.println("id:"+e.getCategoryId()+"  "+"comicnumber:"+ e.getComicNumber());
 //        }
         model.addAttribute("categories",categories);
+        model.addAttribute("page", "categoriesPage");
         return "categories";
     }
 
@@ -77,7 +78,7 @@ public class CategoryController {
     public String edit(RedirectAttributes redirectAttributes, @RequestParam("categoryId") Long id, @RequestParam("categoryName") String category,@RequestParam("desscription") String desscription) {
         Optional<CategoryEntity> cate = categoryServices.FindById(id);
         cate.get().setCategoryName(category);
-        cate.get().setDescriptions(desscription);
+        cate.get().setDescription(desscription);
         if(categoryServices.Update(cate.get())!=null){
             redirectAttributes.addFlashAttribute("success","Edit Success");
         }else{

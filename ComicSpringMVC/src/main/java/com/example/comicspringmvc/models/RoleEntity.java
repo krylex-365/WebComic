@@ -3,6 +3,7 @@ package com.example.comicspringmvc.models;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -13,8 +14,29 @@ public class RoleEntity {
     @Column(name = "RoleId")
     private Long roleId;
 
-    @Column(name = "RoleName")
+    @Column(name = "RoleCode", columnDefinition = "varchar(100)", unique = true, nullable = false)
+    private String roleCode;
+
+    @Column(name = "RoleName", columnDefinition = "nvarchar(100)", unique = true, nullable = false)
     private String roleName;
+
+    @Column(name = "Description", columnDefinition = "text")
+    private String description;
+
+    @Column(name = "CreatedDate", nullable = false)
+    private LocalDate createdDate;
+
+    @Column(name = "ModifiedDate")
+    private LocalDate modifiedDate;
+
+    @Column(name = "CreatedBy")
+    private Long createdBy;
+
+    @Column(name = "ModifiedBy")
+    private Long modifiedBy;
+
+    @Column(name = "Status", columnDefinition = "integer default 1")
+    private Integer status = 1;
 
     public String getRoleName() {
         return roleName;
@@ -30,6 +52,62 @@ public class RoleEntity {
 
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDate getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDate modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(Long modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

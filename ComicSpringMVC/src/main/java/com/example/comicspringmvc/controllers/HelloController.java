@@ -32,6 +32,8 @@ public class HelloController {
 //        }
 
         System.out.println("test ok");
+
+        //System.out.println(accountRepository.TEMP());
 //        model.addAttribute("abc", "test123");
 //        model.addAttribute("url", "image.jpg");
         return "index";

@@ -11,7 +11,7 @@ public class ReportEntity {
     @Column(name = "ReportId")
     private Long reportId;
 
-    @Column(name = "Content", nullable = false)
+    @Column(name = "Content", columnDefinition = "nvarchar", nullable = false)
     private String content;
 
     @Column(name = "Date", nullable = false)

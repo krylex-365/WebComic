@@ -27,12 +27,13 @@ public class AuthorController {
     @RequestMapping(method = RequestMethod.GET, value = {"/author"})
     public String authorList (Model model) {
         model.addAttribute("authorsList", authorServices.FindAll());
-        model.addAttribute("authorPage", "true");
+        model.addAttribute("page", "authorsPage");
         return "authors";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = {"/author/add"})
     public String addAuthor(Model model) {
+        model.addAttribute("page", "authorsPage");
         return "authorAdd";
     }
 
@@ -55,6 +56,7 @@ public class AuthorController {
         if (author.isPresent()) {
 //            System.out.println(author);
             model.addAttribute("author", author.get());
+            model.addAttribute("page", "authorsPage");
             return "authorEdit";
         }
         redirectAttributes.addFlashAttribute("fail", "Tác giả không tồn tại!");

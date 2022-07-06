@@ -11,6 +11,7 @@ public class ComicController {
     @RequestMapping(method = RequestMethod.GET, value = {"/comic"})
     public String comicList (Model model) {
         model.addAttribute("authorname","author1");
+        model.addAttribute("page", "comicsPage");
         return "comics";
     }
 

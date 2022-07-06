@@ -11,6 +11,7 @@ public class ChapterController {
     @RequestMapping(method = RequestMethod.GET, value = {"/chapter"})
     public String comicList (Model model) {
         model.addAttribute("authorname","author1");
+        model.addAttribute("page", "chaptersPage");
         return "chapters";
     }
 

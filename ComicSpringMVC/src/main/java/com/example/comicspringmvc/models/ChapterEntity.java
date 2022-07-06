@@ -11,7 +11,7 @@ public class ChapterEntity {
     @Column(name = "ChapterId")
     private Long chapterId;
 
-    @Column(name = "ChapterName", nullable = false)
+    @Column(name = "ChapterName", columnDefinition = "nvarchar", nullable = false)
     private String chapterName;
 
     @Column(name = "CreatedDate", nullable = false)
@@ -20,13 +20,14 @@ public class ChapterEntity {
     @Column(name = "ModifiedDate")
     private LocalDate modifiedDate;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "CreatedBy", nullable = false, foreignKey = @ForeignKey(name = "FK_Chapter_AccountCreated"))
-    private AccountEntity createdBy;
+    @Column(name = "CreatedBy")
+    private Long createdBy;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "ModifiedBy", foreignKey = @ForeignKey(name = "FK_Chapter_AccountModified"))
-    private AccountEntity modifiedBy;
+    @Column(name = "ModifiedBy")
+    private Long modifiedBy;
+
+    @Column(name = "Status", columnDefinition = "integer default 1")
+    private Integer status = 1;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "ComicId", nullable = false, foreignKey = @ForeignKey(name = "FK_Chapter_Comic"))
@@ -67,20 +68,28 @@ public class ChapterEntity {
         this.modifiedDate = modifiedDate;
     }
 
-    public AccountEntity getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(AccountEntity createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
-    public AccountEntity getModifiedBy() {
+    public Long getModifiedBy() {
         return modifiedBy;
     }
 
-    public void setModifiedBy(AccountEntity modifiedBy) {
+    public void setModifiedBy(Long modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public ComicEntity getComic() {
@@ -98,8 +107,9 @@ public class ChapterEntity {
                 ", chapterName='" + chapterName + '\'' +
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
-                ", createdBy=" + createdBy +
-                ", modifiedBy=" + modifiedBy +
+                ", createdBy='" + createdBy + '\'' +
+                ", modifiedBy='" + modifiedBy + '\'' +
+                ", status=" + status +
                 ", comic=" + comic +
                 '}';
     }

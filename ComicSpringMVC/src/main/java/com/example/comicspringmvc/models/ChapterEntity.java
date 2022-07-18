@@ -11,8 +11,17 @@ public class ChapterEntity {
     @Column(name = "ChapterId")
     private Long chapterId;
 
+    // Thứ tự chương
+    @Column(name = "ChapterOrder", nullable = false)
+    private Integer chapterOrder;
+
+    // Tên truyện (VD: Chương 1 // Chapter 1 // Chapter 1: Isekai bla bla)
     @Column(name = "ChapterName", columnDefinition = "nvarchar", nullable = false)
     private String chapterName;
+
+    // Tên đường dẫn folder chương lowercase
+    @Column(name = "ChapterNameLowerCase", nullable = false)
+    private String chapterNameLowerCase;
 
     @Column(name = "CreatedDate", nullable = false)
     private LocalDate createdDate;

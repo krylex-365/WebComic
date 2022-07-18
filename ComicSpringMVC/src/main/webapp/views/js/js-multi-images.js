@@ -111,6 +111,8 @@ $("body").on("click", ".del-img-block", function () {
     map.set(count, div.getAttribute("value"));
     count++;
 }*/
+
+// upload file
 var loadFile = function (input) {
     // var image = document.getElementById('output');
     // image.src = URL.createObjectURL(event.target.files[0]);
@@ -139,6 +141,15 @@ var loadFile = function (input) {
         var image = document.createElement("img");
         image.src = URL.createObjectURL(file.item(i));
         image.setAttribute("style", "width:300px");
+        var inputOrder = document.createElement("input");
+        inputOrder.setAttribute("type", "number");
+        inputOrder.setAttribute("class", "valid form-control");
+        inputOrder.setAttribute("aria-invalid", "false");
+        inputOrder.setAttribute("min", "1");
+        inputOrder.setAttribute("max", "200");
+        inputOrder.setAttribute("value", countImage);
+        inputOrder.setAttribute("placeholder", "Nhập vào số thứ tự...");
+        //< input type = "number" class="valid" aria - invalid="false" min = "1" max = "200" >
         // images.id="chapter-image";
         // images.setAttribute("onclick","mark(this)");
         // imgaes.value=i;
@@ -150,6 +161,7 @@ var loadFile = function (input) {
         iDel.setAttribute("class", "fa fa-close");
         divDel.appendChild(iDel);
         div.appendChild(image);
+        div.appendChild(inputOrder);
         li.appendChild(div);
         li.append(divDel);
         element.appendChild(li);
@@ -163,35 +175,128 @@ var loadFile = function (input) {
     //     element.appendChild(images);
     // }
 };
+
+function createJSON() {
+    jsonObj = [];
+    $("input[class=email]").each(function () {
+
+        var id = $(this).attr("title");
+        var email = $(this).val();
+
+        item = {}
+        item["title"] = id;
+        item["email"] = email;
+
+        jsonObj.push(item);
+    });
+
+    console.log(jsonObj);
+}
+
+// submit function
 var submit = () => {
-    var form = new FormData();
+    //jsonObj = [];
+    var form = document.getElementById("chapterAdd");
     var files = document.getElementById("chapterImages").files;
-
-
     var List = [].slice.call(files);
 
-
     // var list = document.getElementById("chapter-image");
-
     // console.log(list.item(0).files);
 
-    for (var i = 0; i < List.length; i++) {
-        console.log(map.get(i));
-        form.append("image", List[map.get(i)]);
+    console.log(List.length);
+    var listItemsCate = $("#container-images").find("li");
+    console.log(listItemsCate.length);
+    for (let i = 0; i < listItemsCate.length; i++) {
+        console.log(listImages.get("file-" + i));
+        form.append("image", List[listImages.get("file-" + i)]);
     }
-
 
     // for(var i = 0; i < map.length; i++){
     //     form.append("image",map.get(i));
     // }
-
-
-
     // console.log("keys",form.keys());
-    //
     // console.log(files.length);
-    // fetch('/upload/image/1/1', {method: "POST",body: form})
+    //fetch('/chapter/test', { method: "POST", body: JSON.stringify({ a: '1', b: 'Textual content' })})
+    /*const rawResponse = fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({a: '1', b: 'Textual content'})
+    });
+    const content = rawResponse.json();
+
+    console.log(content);*/
+
 }
+
+$('.btn-test').on('click', function () {
+    console.log("run test");
+    /*var jsonA = {a: '1', b: 'Textual content'};
+    var form = document.getElementById("chapterAdd");//new FormData();
+    var files = document.getElementById("chapterImages").files;
+    var List = [].slice.call(files);
+
+    // var list = document.getElementById("chapter-image");
+    // console.log(list.item(0).files);
+    console.log(List.length);
+    var listItemsCate = $("#container-images").find("li");
+    console.log(listItemsCate.length);
+    for (var i = 0; i < listItemsCate.length; i++) {
+        console.log(listImages.get("file-" + i));
+        form.append("image", List[listImages.get("file-" + i)]);
+    }*/
+    /*jsonObj = [];
+
+    item = {}
+    item["a"] = "id";
+    item["b"] = "email";
+
+    jsonObj.push(item);
+
+    console.log(jsonObj);
+    //fetch('/chapter/test', { method: "POST", body: JSON.stringify({ a: '1', b: 'Textual content' })})
+
+    fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonA)
+    });
+    console.log(JSON.stringify({jsonA}))
+    console.log(JSON.stringify({a: '1', b: 'Textual content'}));*/
+
+    /*var payload = {
+        a: "1",
+        b: "2"
+    };
+
+    var data = new FormData();
+    data.append( "json", JSON.stringify( payload ) );
+
+    fetch("/chapter/test/",
+        {
+            method: "POST",
+            body: data
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){ alert( JSON.stringify( data ) ) })*/
+
+    /*fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonA)
+    }).then(res => res.json())
+        .then(res => console.log(res));*/
+});
+
+// validate ảnh
 $('form[name="chapterAdd"]').on('submit', function () {
     var listItemsCate = $("#container-images").find("li");
     console.log(listItemsCate.length);
@@ -200,6 +305,8 @@ $('form[name="chapterAdd"]').on('submit', function () {
         //e.preventDefault();
     }
 });
+
+// validate form
 $("form[name='chapterAdd']").validate({
     // Specify validation rules
     rules: {
@@ -215,18 +322,24 @@ $("form[name='chapterAdd']").validate({
         "comicId": {
             required: true
         },
-        "chapterNum": {
+        "chapterOrder": {
             required: true,
             min: 0,
             max: 20000
+        },
+        "chapterName": {
+            required: true
         }
     },
     messages: {
         "comicId": "Hãy chọn truyện muốn thêm chương",
-        "chapterNum": {
+        "chapterOrder": {
             required: "Hãy nhập số",
             min: "Số chương không nhỏ hơn 0",
             max: "Số chương không lớn hơn 20000"
+        },
+        "chapterName": {
+            required: "Hãy nhập tên của chương"
         }
         //"authors[]": "Please choose comic author",
         /*lastname: "Please enter your lastname",
@@ -241,6 +354,22 @@ $("form[name='chapterAdd']").validate({
             console.log($('.errors').length);
             isValid = 0;
         } else {
+            console.log("submit");
+            //var form = document.getElementById("chapterAdd");
+            var files = document.getElementById("chapterImages").files;
+            var List = [].slice.call(files);
+
+            // var list = document.getElementById("chapter-image");
+            // console.log(list.item(0).files);
+
+            console.log(List.length);
+            var listItemsCate = $("#container-images").find("li");
+            console.log(listItemsCate.length);
+            for (let i = 1; i <= listItemsCate.length; i++) {
+                console.log(listImages.get("file-" + i));
+                form.append("image", List[listImages.get("file-" + i)]);
+            }
+            console.log(form);
             form.submit();
         }
     }

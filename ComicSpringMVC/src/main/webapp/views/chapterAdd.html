@@ -18,8 +18,8 @@
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="./comics.html">Quản lý Chương</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{/chapters}">Quản lý Chương</a></li>
                         <li class="breadcrumb-item active" style="font-weight: bold">Thêm Chương</li>
                     </ol>
                 </div>
@@ -33,10 +33,10 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
-                                        <a href="./chapters.html" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
+                                        <a th:href="@{/chapters}" style="float:left;"><button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button></a>
                                     </div>
                                 </div>
-                                <form id="chapterAdd" name="chapterAdd" method="get">
+                                <form id="chapterAdd" name="chapterAdd" method="post" th:action="@{/chapter/add}">
                                     <div class="row">
                                         <div class="col-lg-12 mb-3"><h3>Thông tin chương</h3></div>
                                         <div class="col-lg-12">
@@ -64,13 +64,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="comicName">Chương số <span class="text-danger">*</span></label>
-                                                        <input type="number" name="chapterNum" class="form-control" placeholder="Nhập chương (số)...">
+                                                        <label for="chapterOrder">Thứ tự chương <span class="text-danger">*</span></label>
+                                                        <input type="number" name="chapterOrder" class="form-control" placeholder="Nhập thứ tự (số)...">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="comicName">Tên chương <span class="text-danger">(Không bắt buộc)</span></label>
+                                                        <label for="chapterName">Tên chương <span class="text-danger">*</span></label>
                                                         <input type="text" name="chapterName" class="form-control" placeholder="Nhập tên chương...">
                                                     </div>
                                                 </div>
@@ -97,6 +97,7 @@
                                     <div class="form-group row">
                                         <div class="col-lg-12 td-center">
                                             <button type="submit" class="btn btn-primary submit">Thêm chương</button>
+                                            <button class="btn btn-primary btn-test">test</button>
                                         </div>
                                     </div>
                                 </form>

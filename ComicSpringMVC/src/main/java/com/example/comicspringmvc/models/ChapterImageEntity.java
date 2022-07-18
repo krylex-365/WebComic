@@ -10,6 +10,8 @@ public class ChapterImageEntity {
     @Column(name = "ChapterImageId")
     private Long chapterImageId;
 
+
+
     @Column(name = "URL", nullable = false)
     private String url;
 

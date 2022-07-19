@@ -47,10 +47,10 @@ public class HelloController {
         return "<h1>User</h1>";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/temp")
     public String admin(Authentication authentication, Model model) {
-        model.addAttribute("principal", authentication.getPrincipal());
-        return "admin";
+        //model.addAttribute("principal", authentication.getPrincipal());
+        return "test";
     }
 
     @PostMapping("/upload/image/{mangaid}/{chapter}")

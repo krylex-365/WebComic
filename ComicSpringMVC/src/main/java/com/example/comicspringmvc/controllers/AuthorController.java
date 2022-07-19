@@ -22,7 +22,6 @@ public class AuthorController {
     @Autowired
     AuthorServices authorServices;
 
-    AuthorEntity authorEntity;
 
     @RequestMapping(method = RequestMethod.GET, value = {"/author"})
     public String authorList (Model model) {

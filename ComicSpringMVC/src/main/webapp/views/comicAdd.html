@@ -44,13 +44,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="comicName">Tên truyện <span class="text-danger">*</span></label>
-                                                        <input type="text" name="comicName" class="form-control" placeholder="Nhập tên truyện..." required>
+                                                        <input type="text" id="comicName" name="comicName" class="form-control" placeholder="Nhập tên truyện..." required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="status">Tình trạng <span class="text-danger">*</span></label>
-                                                        <select class="form-control" name="status" required>
+                                                        <select id="status" class="form-control" name="status" required>
                                                             <option value="">-- Chọn tình trạng --</option>
                                                             <option value="1">Tạm dừng</option>
                                                             <option value="2">Đang tiến hành</option>
@@ -65,11 +65,9 @@
                                                         </ul>
                                                         <input id="categoryInput" list="categoriesRecommence" type="text" class="form-control" placeholder="Nhập thể loại...">
                                                         <datalist id="categoriesRecommence">
-                                                            <option value="Action">
-                                                            <option value="Romance">
-                                                            <option value="Fantasy">
-                                                            <option value="Adventure">
-                                                            <option value="Drama">
+                                                            <div th:each="cate: ${category}" th:remove="tag">
+                                                                <option th:text="${cate.CategoryName}" th:value="${cate.CategoryId}" ></option>
+                                                            </div>
                                                         </datalist>
                                                     </div>
                                                 </div>
@@ -92,29 +90,29 @@
                                                     <div class="form-group">
                                                         <label for="description">Nội dung <span class="text-danger">*</span></label>
                                                         <textarea class="form-control h-150px" rows="4"
-                                                                  form="addComic" name="description" required></textarea>
+                                                                 id="description" form="addComic" name="description" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="ngay">Ngày phát hành <span class="text-danger">*</span></label>
+                                                        <label for="ngayphathanh">Ngày phát hành <span class="text-danger">*</span></label>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                            <input type="text" id="ngayphathanh" class="form-control mydatepicker" name="dateFrom" placeholder="mm/dd/yyyy" required> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="ngay">Ngày kết thúc <span class="text-danger">(Không bắt buộc)</span></label>
+                                                        <label for="ngayketthuc">Ngày kết thúc <span class="text-danger">(Không bắt buộc)</span></label>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                            <input type="text" id="ngayketthuc" class="form-control mydatepicker" name="dateTo" placeholder="mm/dd/yyyy"> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="thumbnail">Ảnh bìa <span class="text-danger">*</span></label>
-                                                        <input type="file" name="thumbnail" class="form-control" required>
+                                                        <input type="file" id="thumbnail" name="thumbnail" class="form-control" required>
                                                     </div>
                                                 </div>
                                             </div>

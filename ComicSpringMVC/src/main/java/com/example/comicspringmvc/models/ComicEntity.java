@@ -11,6 +11,11 @@ public class ComicEntity {
     @Column(name = "ComicId")
     private Long comicId;
 
+    public ComicEntity(String comicName, String description) {
+        this.comicName = comicName;
+        this.description = description;
+    }
+
     @Column(name = "ComicName", columnDefinition = "nvarchar", nullable = false)
     private String comicName;
 

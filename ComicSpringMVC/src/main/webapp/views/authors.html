@@ -67,7 +67,8 @@
                                                 <th style="width:10%; min-width:50px;" class="th-center-bold">Xóa</th>
                                             </tr>
                                         </thead>
-                                        <tbody th:each="author: ${authorsList}" th:remove="tag">
+                                        <tbody>
+                                        <div th:each="author: ${authorsList}" th:remove="tag">
                                             <tr>
                                                 <td class="td-center" th:text="${authorsList.indexOf(author)+1}"></td>
                                                 <td class="td-center" th:text="${author.authorId}"></td>
@@ -108,6 +109,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+
 
                                         </tbody>
                                     </table>
@@ -116,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-
+<button onclick="" > </button>
 
             </div>
             <!-- #/ container -->

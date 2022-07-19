@@ -33,6 +33,9 @@ public class MyUserDetails implements UserDetails {
         return authorities;
     }
 
+    public Long getId(){
+        return account.getAccountId();
+    }
     @Override
     public String getPassword() {
         return account.getPassword();

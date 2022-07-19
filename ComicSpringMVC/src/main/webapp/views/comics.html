@@ -34,9 +34,22 @@
                                     <div class="col-md-12 mb-4">
                                         <h3 class="td-center">DANH SÁCH TRUYỆN</h3>
                                     </div>
+                                    <div th:if="${success}" class="col-md-12 alert alert-success alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${success}"></strong>
+                                    </div>
+                                    <div th:if="${fail}" class="col-md-12 alert alert-danger alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${fail}"></strong>
+                                    </div>
+                                    <div th:if="${nochange}" class="col-md-12 alert alert-warning alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong th:text="${nochange}"></strong>
+                                    </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <!--<a asp-controller="QuanLyNhanVien" asp-action="Index" style="float:right;"><button class="btn btn-primary">Quay lại <i class="fa fa-undo" aria-hidden="true"></i></button></a>-->
-                                        <a href="./comicAdd.html" style="float:right;">
+                                        <a th:href="@{/comic/add}" style="float:right;">
                                             <button class="btn btn-primary"><span style="margin-right: 10px">Thêm mới </span><i class="fa fa-plus"></i></button>
                                         </a>
                                     </div>

@@ -32,11 +32,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
                 .antMatchers("/admin").hasAuthority("ADMIN")
+
                 .antMatchers("/").permitAll()
                 .and().formLogin();
 //                .and()
 //                .exceptionHandling().accessDeniedPage("/webapp/views/page-error.html");
 //        http.authorizeRequests().anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
+//        .antMatchers("/category").hasAuthority("ADMIN")
     }
 
     @Override

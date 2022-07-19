@@ -2,24 +2,14 @@ package com.example.comicspringmvc.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
 @Table(name = "Category")
 public class CategoryEntity {
 
-    public CategoryEntity(String categoryName, String description) {
-        this.categoryName = categoryName;
-        this.description = description;
-    }
 
-    public CategoryEntity(CategoryEntity category, Long comicNumber) {
-        this.categoryId = category.categoryId;
-        this.categoryName = category.categoryName;
-        this.description = category.description;
-        this.status = category.status;
-        this.countComics = comicNumber;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +41,33 @@ public class CategoryEntity {
     private Long countComics;
 
     public CategoryEntity() {
+    }
 
+    public CategoryEntity(CategoryEntity category, Long countComics) {
+        this.categoryId = category.categoryId;
+        this.categoryName = category.categoryName;
+        this.description = category.description;
+        this.countComics = countComics;
+    }
+
+    public CategoryEntity(String categoryName, String description, LocalDate createdDate, Long createBy) {
+        this.categoryName = categoryName;
+        this.description = description;
+        this.createdDate = createdDate;
+        this.createdBy = createBy;
+        this.status = 1;
+    }
+    public CategoryEntity(Long categoryId,String categoryName, String description, LocalDate modifiedDate, Long modifiedBy) {
+        this.categoryName = categoryName;
+        this.description = description;
+        this.modifiedDate = modifiedDate;
+        this.modifiedBy = modifiedBy;
+    }
+
+    public CategoryEntity(String categoryName, String description) {
+        this.categoryName = categoryName;
+        this.description = description;
+        this.status = 1;
     }
 
     public Integer getStatus() {

@@ -50,6 +50,7 @@ $("body").on("click", "#btn-reset", function () {
     count++;
 });*/
 
+// delete image
 $("body").on("click", ".del-img-block", function () {
     //console.log($(this));
     console.log('abc123');
@@ -59,6 +60,7 @@ $("body").on("click", ".del-img-block", function () {
     $('.li-' + v).remove();
     listImages.delete('file-' + v);
     console.log(listImages);
+    checkUniqueOrder();
     /*var divMark = $(this).find("div");
     if ($(divMark).is('.text-block')) {
         $(this).children('div:last-child').remove();
@@ -95,19 +97,12 @@ $("body").on("click", ".del-img-block", function () {
         innerdiv.appendChild(h1);
         div.append(innerdiv);
     }
-
     //console.log(self.getElementsByClassName('text-block'));
-
-
-
     //console.log(listItemsCate);
-
     // if(self.hasClass("text-block"))console.log()
-
     // if(files.length<map.size){
     //
     // }
-
     map.set(count, div.getAttribute("value"));
     count++;
 }*/
@@ -143,13 +138,13 @@ var loadFile = function (input) {
         image.setAttribute("style", "width:300px");
         var inputOrder = document.createElement("input");
         inputOrder.setAttribute("type", "number");
-        inputOrder.setAttribute("class", "valid form-control");
+        inputOrder.setAttribute("class", "valid form-control order-image");
         inputOrder.setAttribute("aria-invalid", "false");
-        inputOrder.setAttribute("min", "1");
-        inputOrder.setAttribute("max", "200");
+        //inputOrder.setAttribute("min", "1");
+        //inputOrder.setAttribute("max", "200");
         inputOrder.setAttribute("value", countImage);
+        inputOrder.setAttribute("name", "orderImage");
         inputOrder.setAttribute("placeholder", "Nhập vào số thứ tự...");
-        //< input type = "number" class="valid" aria - invalid="false" min = "1" max = "200" >
         // images.id="chapter-image";
         // images.setAttribute("onclick","mark(this)");
         // imgaes.value=i;
@@ -176,7 +171,7 @@ var loadFile = function (input) {
     // }
 };
 
-function createJSON() {
+/*function createJSON() {
     jsonObj = [];
     $("input[class=email]").each(function () {
 
@@ -191,7 +186,7 @@ function createJSON() {
     });
 
     console.log(jsonObj);
-}
+}*/
 
 // submit function
 var submit = () => {
@@ -296,6 +291,39 @@ $('.btn-test').on('click', function () {
         .then(res => console.log(res));*/
 });
 
+// validate unique order images
+var checkUniqueOrder = function () {
+    var vals = new Array();
+    var index = -1;
+    // console.log("click: " + $(this).val());
+    var listInput = $('input[name="orderImage"]');
+    $('input[name="orderImage"]').each(function() {
+        // console.log("========================================");
+        // console.log("loop: " + $(this).val());
+        index = jQuery.inArray($(this).val(), vals);
+        // console.log("index: " + index);
+        if(index == -1) { //Not found
+            vals.push($(this).val());
+            $(this).css("background-color", "#fff");
+            listInput.eq(index).css("background-color", "#fff");
+            // console.log("draw white: " + $(this).val());
+            // console.log("draw white: " + listInput.eq(index).val());
+        } else {
+            vals.push($(this).val());
+            // console.log("duplicate: " + $(this).val());
+            $(this).css("background-color", "#e75757");
+            listInput.eq(index).css("background-color", "#e75757");
+            // console.log("draw red: " + $(this).val());
+            // console.log("draw red: " + listInput.eq(index).val());
+        }
+        //console.log(vals);
+    })
+}
+
+$("body").on("change", ".order-image", function () {
+    checkUniqueOrder();
+});
+
 // validate ảnh
 $('form[name="chapterAdd"]').on('submit', function () {
     var listItemsCate = $("#container-images").find("li");
@@ -325,21 +353,31 @@ $("form[name='chapterAdd']").validate({
         "chapterOrder": {
             required: true,
             min: 0,
-            max: 20000
+            max: 2000
         },
         "chapterName": {
             required: true
+        },
+        "orderImage": {
+            required: true,
+            min: 1,
+            max: 200
         }
     },
     messages: {
         "comicId": "Hãy chọn truyện muốn thêm chương",
         "chapterOrder": {
-            required: "Hãy nhập số",
+            required: "Hãy nhập thứ tự chương",
             min: "Số chương không nhỏ hơn 0",
-            max: "Số chương không lớn hơn 20000"
+            max: "Số chương không lớn hơn 2000"
         },
         "chapterName": {
             required: "Hãy nhập tên của chương"
+        },
+        "orderImage": {
+            required: "Hãy nhập thứ tự hình ảnh",
+            min: "Thứ tự ảnh không nhỏ hơn 0",
+            max: "Thứ tự ảnh không lớn hơn 200"
         }
         //"authors[]": "Please choose comic author",
         /*lastname: "Please enter your lastname",

@@ -26,7 +26,8 @@ public class ChapterController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = {"/chapter/add"})
-    public String addComic(@RequestParam String comicId, String chapterOrder, String chapterName, MultipartFile[] image, Model model, RedirectAttributes redirectAttributes) {
+    public String addComic(@RequestParam("comicId") String comicId, @RequestParam("chapterOrder") String chapterOrder, @RequestParam("chapterName") String chapterName,
+                           @RequestParam("orderImage") int[] orderImage, Model model, RedirectAttributes redirectAttributes) {
         System.out.println("xyz");
         return "redirect:/chapter/add";
     }

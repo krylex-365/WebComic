@@ -26,7 +26,7 @@ public class AuthorController {
 
     @RequestMapping(method = RequestMethod.GET, value = {"/author"})
     public String authorList (Model model) {
-        model.addAttribute("authorsList", authorServices.FindAll());
+        model.addAttribute("authorsList", authorServices.GetAll());
         model.addAttribute("page", "authorsPage");
         return "authors";
     }
@@ -64,8 +64,8 @@ public class AuthorController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = {"/author/edit"})
-    public String editAuthor(@RequestParam String authorId, String authorName, Model model, RedirectAttributes redirectAttributes) {
-        Optional<AuthorEntity> author = authorServices.FindById(Long.parseLong(authorId));
+    public String editAuthor(@RequestParam("authorId") Long authorId, @RequestParam("authorName") String authorName, Model model, RedirectAttributes redirectAttributes) {
+        Optional<AuthorEntity> author = authorServices.FindById(authorId);
         if (author.isPresent()) {
 //            System.out.println(author);
 //            model.addAttribute("author", author);
@@ -94,7 +94,7 @@ public class AuthorController {
 //            System.out.println(author);
 //            model.addAttribute("author", author.get());
             try {
-                authorServices.Delete(Long.parseLong(authorId));
+                authorServices.Delete(author.get());
                 redirectAttributes.addFlashAttribute("success", "Xóa tác giả thành công!");
                 return "redirect:/author";
             } catch (Exception e) {

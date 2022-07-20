@@ -11,7 +11,7 @@ $("body").on("click", ".btn-images-width", function () {
 });
 
 $("body").on("click", "#btn-reset", function () {
-    console.log('abc');
+    /*console.log('abc');
     //var form = new FormData();
     var files = document.getElementById("chapterImages").files;
     var List = [].slice.call(files);
@@ -23,14 +23,14 @@ $("body").on("click", "#btn-reset", function () {
     console.log('abc');
     console.log(files);
     console.log(List);
-    /*for (var i = 0; i < List.length; i++) {
-        console.log(List[i]);
-        //form.append("image", List[map.get(i)]);
-    }*/
     console.log('abc');
     $(".text-block").remove();
     count = 0;
-    map.clear();
+    map.clear();*/
+
+    $("#container-images").find("li").remove();
+    listImages.clear();
+    countImage = 0;
 });
 
 /*$("body").on("click", ".container-image", function () {
@@ -55,12 +55,17 @@ $("body").on("click", ".del-img-block", function () {
     //console.log($(this));
     console.log('abc123');
     console.log(listImages);
-    var v = $(this).attr('value');
+    let v = $(this).attr('value');
     console.log(v);
     $('.li-' + v).remove();
     listImages.delete('file-' + v);
     console.log(listImages);
     checkUniqueOrder();
+    let listItems = $("#container-images").find("li");
+    console.log(listItems.length);
+    if (listItems.length < 1) {
+        countImage = 0;
+    }
     /*var divMark = $(this).find("div");
     if ($(divMark).is('.text-block')) {
         $(this).children('div:last-child').remove();
@@ -293,10 +298,11 @@ $('.btn-test').on('click', function () {
 
 // validate unique order images
 var checkUniqueOrder = function () {
-    var vals = new Array();
-    var index = -1;
+    let vals = new Array();
+    let unique = true;
+    let index = -1;
     // console.log("click: " + $(this).val());
-    var listInput = $('input[name="orderImage"]');
+    let listInput = $('input[name="orderImage"]');
     $('input[name="orderImage"]').each(function() {
         // console.log("========================================");
         // console.log("loop: " + $(this).val());
@@ -313,8 +319,14 @@ var checkUniqueOrder = function () {
             // console.log("duplicate: " + $(this).val());
             $(this).css("background-color", "#e75757");
             listInput.eq(index).css("background-color", "#e75757");
+            unique = false;
             // console.log("draw red: " + $(this).val());
             // console.log("draw red: " + listInput.eq(index).val());
+        }
+        if (unique) {
+            $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>');
+        } else {
+            $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>  <span class="errors">Thứ tự ảnh bị trùng lặp</span>');
         }
         //console.log(vals);
     })
@@ -326,9 +338,9 @@ $("body").on("change", ".order-image", function () {
 
 // validate ảnh
 $('form[name="chapterAdd"]').on('submit', function () {
-    var listItemsCate = $("#container-images").find("li");
-    console.log(listItemsCate.length);
-    if (listItemsCate.length < 1) {
+    var listItems = $("#container-images").find("li");
+    console.log(listItems.length);
+    if (listItems.length < 1) {
         $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>  <span class="errors">Hãy chọn ảnh</span>');
         //e.preventDefault();
     }

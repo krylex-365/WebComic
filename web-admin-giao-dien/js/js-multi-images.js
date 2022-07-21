@@ -111,6 +111,8 @@ $("body").on("click", ".del-img-block", function () {
     map.set(count, div.getAttribute("value"));
     count++;
 }*/
+
+// upload file
 var loadFile = function (input) {
     // var image = document.getElementById('output');
     // image.src = URL.createObjectURL(event.target.files[0]);
@@ -139,6 +141,15 @@ var loadFile = function (input) {
         var image = document.createElement("img");
         image.src = URL.createObjectURL(file.item(i));
         image.setAttribute("style", "width:300px");
+        var inputOrder = document.createElement("input");
+        inputOrder.setAttribute("type", "number");
+        inputOrder.setAttribute("class", "valid form-control");
+        inputOrder.setAttribute("aria-invalid", "false");
+        inputOrder.setAttribute("min", "1");
+        inputOrder.setAttribute("max", "200");
+        inputOrder.setAttribute("value", countImage);
+        inputOrder.setAttribute("placeholder", "Nhập vào số thứ tự...");
+            //< input type = "number" class="valid" aria - invalid="false" min = "1" max = "200" >
         // images.id="chapter-image";
         // images.setAttribute("onclick","mark(this)");
         // imgaes.value=i;
@@ -150,6 +161,7 @@ var loadFile = function (input) {
         iDel.setAttribute("class", "fa fa-close");
         divDel.appendChild(iDel);
         div.appendChild(image);
+        div.appendChild(inputOrder);
         li.appendChild(div);
         li.append(divDel);
         element.appendChild(li);
@@ -163,11 +175,29 @@ var loadFile = function (input) {
     //     element.appendChild(images);
     // }
 };
+
+function createJSON() {
+    jsonObj = [];
+    $("input[class=email]").each(function () {
+
+        var id = $(this).attr("title");
+        var email = $(this).val();
+
+        item = {}
+        item["title"] = id;
+        item["email"] = email;
+
+        jsonObj.push(item);
+    });
+
+    console.log(jsonObj);
+}
+
+// submit function
 var submit = () => {
+    jsonObj = [];
     var form = new FormData();
     var files = document.getElementById("chapterImages").files;
-
-
     var List = [].slice.call(files);
 
 
@@ -192,6 +222,8 @@ var submit = () => {
     // console.log(files.length);
     // fetch('/upload/image/1/1', {method: "POST",body: form})
 }
+
+// validate ảnh
 $('form[name="chapterAdd"]').on('submit', function () {
     var listItemsCate = $("#container-images").find("li");
     console.log(listItemsCate.length);
@@ -200,6 +232,8 @@ $('form[name="chapterAdd"]').on('submit', function () {
         //e.preventDefault();
     }
 });
+
+// validate form
 $("form[name='chapterAdd']").validate({
     // Specify validation rules
     rules: {

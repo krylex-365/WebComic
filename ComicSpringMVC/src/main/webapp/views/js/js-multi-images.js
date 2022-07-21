@@ -11,7 +11,7 @@ $("body").on("click", ".btn-images-width", function () {
 });
 
 $("body").on("click", "#btn-reset", function () {
-    console.log('abc');
+    /*console.log('abc');
     //var form = new FormData();
     var files = document.getElementById("chapterImages").files;
     var List = [].slice.call(files);
@@ -23,14 +23,14 @@ $("body").on("click", "#btn-reset", function () {
     console.log('abc');
     console.log(files);
     console.log(List);
-    /*for (var i = 0; i < List.length; i++) {
-        console.log(List[i]);
-        //form.append("image", List[map.get(i)]);
-    }*/
     console.log('abc');
     $(".text-block").remove();
     count = 0;
-    map.clear();
+    map.clear();*/
+
+    $("#container-images").find("li").remove();
+    listImages.clear();
+    countImage = 0;
 });
 
 /*$("body").on("click", ".container-image", function () {
@@ -50,15 +50,22 @@ $("body").on("click", "#btn-reset", function () {
     count++;
 });*/
 
+// delete image
 $("body").on("click", ".del-img-block", function () {
     //console.log($(this));
     console.log('abc123');
     console.log(listImages);
-    var v = $(this).attr('value');
+    let v = $(this).attr('value');
     console.log(v);
     $('.li-' + v).remove();
     listImages.delete('file-' + v);
     console.log(listImages);
+    checkUniqueOrder();
+    let listItems = $("#container-images").find("li");
+    console.log(listItems.length);
+    if (listItems.length < 1) {
+        countImage = 0;
+    }
     /*var divMark = $(this).find("div");
     if ($(divMark).is('.text-block')) {
         $(this).children('div:last-child').remove();
@@ -95,22 +102,17 @@ $("body").on("click", ".del-img-block", function () {
         innerdiv.appendChild(h1);
         div.append(innerdiv);
     }
-
     //console.log(self.getElementsByClassName('text-block'));
-
-
-
     //console.log(listItemsCate);
-
     // if(self.hasClass("text-block"))console.log()
-
     // if(files.length<map.size){
     //
     // }
-
     map.set(count, div.getAttribute("value"));
     count++;
 }*/
+
+// upload file
 var loadFile = function (input) {
     // var image = document.getElementById('output');
     // image.src = URL.createObjectURL(event.target.files[0]);
@@ -139,6 +141,15 @@ var loadFile = function (input) {
         var image = document.createElement("img");
         image.src = URL.createObjectURL(file.item(i));
         image.setAttribute("style", "width:300px");
+        var inputOrder = document.createElement("input");
+        inputOrder.setAttribute("type", "number");
+        inputOrder.setAttribute("class", "valid form-control order-image");
+        inputOrder.setAttribute("aria-invalid", "false");
+        //inputOrder.setAttribute("min", "1");
+        //inputOrder.setAttribute("max", "200");
+        inputOrder.setAttribute("value", countImage);
+        inputOrder.setAttribute("name", "orderImage");
+        inputOrder.setAttribute("placeholder", "Nhập vào số thứ tự...");
         // images.id="chapter-image";
         // images.setAttribute("onclick","mark(this)");
         // imgaes.value=i;
@@ -150,6 +161,7 @@ var loadFile = function (input) {
         iDel.setAttribute("class", "fa fa-close");
         divDel.appendChild(iDel);
         div.appendChild(image);
+        div.appendChild(inputOrder);
         li.appendChild(div);
         li.append(divDel);
         element.appendChild(li);
@@ -163,43 +175,178 @@ var loadFile = function (input) {
     //     element.appendChild(images);
     // }
 };
+
+/*function createJSON() {
+    jsonObj = [];
+    $("input[class=email]").each(function () {
+
+        var id = $(this).attr("title");
+        var email = $(this).val();
+
+        item = {}
+        item["title"] = id;
+        item["email"] = email;
+
+        jsonObj.push(item);
+    });
+
+    console.log(jsonObj);
+}*/
+
+// submit function
 var submit = () => {
-    var form = new FormData();
+    //jsonObj = [];
+    var form = document.getElementById("chapterAdd");
     var files = document.getElementById("chapterImages").files;
-
-
     var List = [].slice.call(files);
 
-
     // var list = document.getElementById("chapter-image");
-
     // console.log(list.item(0).files);
 
-    for (var i = 0; i < List.length; i++) {
-        console.log(map.get(i));
-        form.append("image", List[map.get(i)]);
+    console.log(List.length);
+    var listItemsCate = $("#container-images").find("li");
+    console.log(listItemsCate.length);
+    for (let i = 0; i < listItemsCate.length; i++) {
+        console.log(listImages.get("file-" + i));
+        form.append("image", List[listImages.get("file-" + i)]);
     }
-
 
     // for(var i = 0; i < map.length; i++){
     //     form.append("image",map.get(i));
     // }
-
-
-
     // console.log("keys",form.keys());
-    //
     // console.log(files.length);
-    // fetch('/upload/image/1/1', {method: "POST",body: form})
+    //fetch('/chapter/test', { method: "POST", body: JSON.stringify({ a: '1', b: 'Textual content' })})
+    /*const rawResponse = fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({a: '1', b: 'Textual content'})
+    });
+    const content = rawResponse.json();
+
+    console.log(content);*/
+
 }
-$('form[name="chapterAdd"]').on('submit', function () {
+
+$('.btn-test').on('click', function () {
+    console.log("run test");
+    /*var jsonA = {a: '1', b: 'Textual content'};
+    var form = document.getElementById("chapterAdd");//new FormData();
+    var files = document.getElementById("chapterImages").files;
+    var List = [].slice.call(files);
+
+    // var list = document.getElementById("chapter-image");
+    // console.log(list.item(0).files);
+    console.log(List.length);
     var listItemsCate = $("#container-images").find("li");
     console.log(listItemsCate.length);
-    if (listItemsCate.length < 1) {
+    for (var i = 0; i < listItemsCate.length; i++) {
+        console.log(listImages.get("file-" + i));
+        form.append("image", List[listImages.get("file-" + i)]);
+    }*/
+    /*jsonObj = [];
+
+    item = {}
+    item["a"] = "id";
+    item["b"] = "email";
+
+    jsonObj.push(item);
+
+    console.log(jsonObj);
+    //fetch('/chapter/test', { method: "POST", body: JSON.stringify({ a: '1', b: 'Textual content' })})
+
+    fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonA)
+    });
+    console.log(JSON.stringify({jsonA}))
+    console.log(JSON.stringify({a: '1', b: 'Textual content'}));*/
+
+    /*var payload = {
+        a: "1",
+        b: "2"
+    };
+
+    var data = new FormData();
+    data.append( "json", JSON.stringify( payload ) );
+
+    fetch("/chapter/test/",
+        {
+            method: "POST",
+            body: data
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){ alert( JSON.stringify( data ) ) })*/
+
+    /*fetch('/chapter/test', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonA)
+    }).then(res => res.json())
+        .then(res => console.log(res));*/
+});
+
+// validate unique order images
+var checkUniqueOrder = function () {
+    let vals = new Array();
+    let unique = true;
+    let index = -1;
+    // console.log("click: " + $(this).val());
+    let listInput = $('input[name="orderImage"]');
+    $('input[name="orderImage"]').each(function() {
+        // console.log("========================================");
+        // console.log("loop: " + $(this).val());
+        index = jQuery.inArray($(this).val(), vals);
+        // console.log("index: " + index);
+        if(index == -1) { //Not found
+            vals.push($(this).val());
+            $(this).css("background-color", "#fff");
+            listInput.eq(index).css("background-color", "#fff");
+            // console.log("draw white: " + $(this).val());
+            // console.log("draw white: " + listInput.eq(index).val());
+        } else {
+            vals.push($(this).val());
+            // console.log("duplicate: " + $(this).val());
+            $(this).css("background-color", "#e75757");
+            listInput.eq(index).css("background-color", "#e75757");
+            unique = false;
+            // console.log("draw red: " + $(this).val());
+            // console.log("draw red: " + listInput.eq(index).val());
+        }
+        if (unique) {
+            $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>');
+        } else {
+            $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>  <span class="errors">Thứ tự ảnh bị trùng lặp</span>');
+        }
+        //console.log(vals);
+    })
+}
+
+$("body").on("change", ".order-image", function () {
+    checkUniqueOrder();
+});
+
+// validate ảnh
+$('form[name="chapterAdd"]').on('submit', function () {
+    var listItems = $("#container-images").find("li");
+    console.log(listItems.length);
+    if (listItems.length < 1) {
         $('#chapterImage').html('Chọn ảnh của chương <span class="text-danger">*</span>  <span class="errors">Hãy chọn ảnh</span>');
         //e.preventDefault();
     }
 });
+
+// validate form
 $("form[name='chapterAdd']").validate({
     // Specify validation rules
     rules: {
@@ -215,18 +362,34 @@ $("form[name='chapterAdd']").validate({
         "comicId": {
             required: true
         },
-        "chapterNum": {
+        "chapterOrder": {
             required: true,
             min: 0,
-            max: 20000
+            max: 2000
+        },
+        "chapterName": {
+            required: true
+        },
+        "orderImage": {
+            required: true,
+            min: 1,
+            max: 200
         }
     },
     messages: {
         "comicId": "Hãy chọn truyện muốn thêm chương",
-        "chapterNum": {
-            required: "Hãy nhập số",
+        "chapterOrder": {
+            required: "Hãy nhập thứ tự chương",
             min: "Số chương không nhỏ hơn 0",
-            max: "Số chương không lớn hơn 20000"
+            max: "Số chương không lớn hơn 2000"
+        },
+        "chapterName": {
+            required: "Hãy nhập tên của chương"
+        },
+        "orderImage": {
+            required: "Hãy nhập thứ tự hình ảnh",
+            min: "Thứ tự ảnh không nhỏ hơn 0",
+            max: "Thứ tự ảnh không lớn hơn 200"
         }
         //"authors[]": "Please choose comic author",
         /*lastname: "Please enter your lastname",
@@ -241,6 +404,22 @@ $("form[name='chapterAdd']").validate({
             console.log($('.errors').length);
             isValid = 0;
         } else {
+            console.log("submit");
+            //var form = document.getElementById("chapterAdd");
+            var files = document.getElementById("chapterImages").files;
+            var List = [].slice.call(files);
+
+            // var list = document.getElementById("chapter-image");
+            // console.log(list.item(0).files);
+
+            console.log(List.length);
+            var listItemsCate = $("#container-images").find("li");
+            console.log(listItemsCate.length);
+            for (let i = 1; i <= listItemsCate.length; i++) {
+                console.log(listImages.get("file-" + i));
+                form.append("image", List[listImages.get("file-" + i)]);
+            }
+            console.log(form);
             form.submit();
         }
     }
